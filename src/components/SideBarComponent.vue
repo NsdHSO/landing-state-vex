@@ -23,7 +23,7 @@ defineProps({
           <div class="container-side-bar-container__paths-name">
             {{ route.name }}
 
-            test IS so STASTAS
+            test IS so dsdass
           </div>
         </router-link>
       </div>
