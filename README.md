@@ -12,6 +12,13 @@
 - [ ] Dashboard Page
 - [ ] Users page
 - [ ] Auth Page
+
+## Development
+```markdown
+We can use FontawesomeIcon like
+    <icon :icon="['fas','user-secret']" />
+```
+
 ## Project Setup
 
 ```sh
