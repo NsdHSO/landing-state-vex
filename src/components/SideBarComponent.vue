@@ -7,6 +7,10 @@ defineProps({
 })
 </script>
 
+
+
+
+
 <template>
   <div class="container-side-bar">
     <div class="container-side-bar__icon">
