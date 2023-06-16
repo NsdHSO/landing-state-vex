@@ -7,10 +7,6 @@ defineProps({
 })
 </script>
 
-
-
-
-
 <template>
   <div class="container-side-bar">
     <div class="container-side-bar__icon">
@@ -54,7 +50,7 @@ defineProps({
     }
 
     .router-link-exact-active:hover {
-      transition: 0.3s all;
+      transition: 0.31s all;
       transform: rotate(720deg) scale(1.3);
       opacity: 0.8;
     }
