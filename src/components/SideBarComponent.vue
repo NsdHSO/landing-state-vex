@@ -22,7 +22,6 @@ defineProps({
           </div>
           <div class="container-side-bar-container__paths-name">
             {{ route.name }}
-
           </div>
         </router-link>
       </div>
