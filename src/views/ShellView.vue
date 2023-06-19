@@ -13,7 +13,7 @@ import SideBar from '@/components/SideBarComponent.vue'
     </div>
     <div class="shell-container__content">
       <div>
-        <router-view ></router-view>
+        <router-view></router-view>
       </div>
     </div>
   </div>

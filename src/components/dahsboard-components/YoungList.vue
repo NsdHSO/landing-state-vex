@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DataTable from '@/components/table/DataTable.vue'
 import { useYoungList } from '@/stores/youngList'
-import {useRouter} from "vue-router";
+import { useRouter } from 'vue-router'
 
 /**
  * Retrieves and manages the young participant list.
