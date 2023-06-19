@@ -23,8 +23,10 @@ const router = useRouter()
  */
 const changeCount = (event: Young) => {
   router.push({
-    name: 'editYongList',
-    params: { id: String(event.group) }
+    name: 'editYoungList',
+    params: {
+      id: String(event.group)
+    }
   })
 }
 </script>

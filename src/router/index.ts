@@ -31,7 +31,7 @@ const router = createRouter({
           children: [
             {
               path: 'edit/:id',
-              name: 'editYongList',
+              name: 'editYoungList',
               component: EditYoungListView
             }
           ]

@@ -1,7 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  componentWhatRender: null
+})
+</script>
 
 <template>
-  <div class="container-young">EDIT</div>
+  <component :is="componentWhatRender"> </component>
 </template>
 
 <style scoped lang="scss">
