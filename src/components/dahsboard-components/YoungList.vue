@@ -21,7 +21,7 @@ const router = useRouter()
  *
  * @param {Event} event - The click event object.
  */
-const changeCount = (event: any) => {
+const changeCount = (event) => {
   router.push('/landing-state-vex/dashboard/edit')
 }
 </script>
