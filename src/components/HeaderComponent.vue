@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import { useCounterStore } from '@/stores/counter'
-import {computed} from "vue";
+import { computed } from 'vue'
 
-  const ate = useCounterStore()
-  const double = computed(() => ate.doubleCount)
-
+const ate = useCounterStore()
+const double = computed(() => ate.doubleCount)
 </script>
 
 <template>
   <div class="header-container">
-    <div class="header-container__search"
-         @click="ate.decrement()">TES
-    </div>
-    <div>
-      {{ate.count}}, Double {{double}}
-    </div>
+    <div class="header-container__search" @click="ate.decrement()">TES</div>
+    <div>{{ ate.count }}, Double {{ double }}</div>
     <div @click="ate.increment()">Items</div>
   </div>
 </template>

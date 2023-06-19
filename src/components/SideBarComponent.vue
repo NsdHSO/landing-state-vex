@@ -1,42 +1,36 @@
-<script setup
-        lang="ts">
-import IconTooling
-    from "@/components/icons/IconTooling.vue";
+<script setup lang="ts">
+import IconTooling from '@/components/icons/IconTooling.vue'
 
 defineProps({
-    routes : {
-        required : true
-    }
+  routes: {
+    required: true
+  }
 })
 </script>
 
 <template>
-    <div class="container-side-bar">
-        <div class="container-side-bar__icon">
-            <router-link to="/">
-                <IconTooling/>
-            </router-link>
-        </div>
-        <div class="container-side-bar-container"
-        >
-            <div v-for="(route, key) in routes"
-                 :key="key"
-                 class="container-side-bar-container__paths">
-                <router-link :to="route.path">
-                    <div class="container-side-bar-container__paths-icon">
-                        <vex-icon :icon="['fas', route.icon]"/>
-                    </div>
-                    <div class="container-side-bar-container__paths-name">
-                        {{ route.name }}
-                    </div>
-                </router-link>
-            </div>
-        </div>
+  <div class="container-side-bar">
+    <div class="container-side-bar__icon">
+      <router-link to="/">
+        <IconTooling />
+      </router-link>
     </div>
+    <div class="container-side-bar-container">
+      <div v-for="(route, key) in routes" :key="key" class="container-side-bar-container__paths">
+        <router-link :to="route.path">
+          <div class="container-side-bar-container__paths-icon">
+            <vex-icon :icon="['fas', route.icon]" />
+          </div>
+          <div class="container-side-bar-container__paths-name">
+            {{ route.name }}
+          </div>
+        </router-link>
+      </div>
+    </div>
+  </div>
 </template>
 
-<style scoped
-       lang="scss">
+<style scoped lang="scss">
 .container-side-bar {
   height: 100%;
   background: var(--color-sidebar-back);
