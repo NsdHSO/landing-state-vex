@@ -7,7 +7,7 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-:deep(.router-link-exact-active) {
+:deep(.router-link-exact-active), :deep(.router-link-active ) {
   color: var(--color-active-link);
 }
 </style>

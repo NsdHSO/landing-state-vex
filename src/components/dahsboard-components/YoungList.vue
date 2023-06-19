@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DataTable from '@/components/table/DataTable.vue'
 import { useYoungList } from '@/stores/youngList'
+import {useRouter} from "vue-router";
 
 /**
  * Retrieves and manages the young participant list.
@@ -8,13 +9,21 @@ import { useYoungList } from '@/stores/youngList'
  * @returns {Object} youngStore - The young participant store object.
  */
 const youngStore = useYoungList()
-
+/**
+ * Retrieves and manages the young participant list.
+ *
+ * @returns {Object} router - The router state
+ * object.
+ */
+const router = useRouter()
 /**
  * Handles the click event on a row in the table.
  *
  * @param {Event} event - The click event object.
  */
-const changeCount = (event) => youngStore.modifiedCountNumber(event.group, 20)
+const changeCount = (event) => {
+  router.push('/landing-state-vex/dashboard/edit')
+}
 </script>
 
 <template>

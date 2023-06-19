@@ -97,7 +97,9 @@ defineProps({
         gap: 1rem;
       }
 
-      .router-link-exact-active {
+      .router-link{
+        &exact, &exact-active {
+        }
         border-radius: 1rem;
         border: 2px solid var(--color-border);
         background: var(--color-bg-active-link);
