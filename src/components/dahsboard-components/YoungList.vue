@@ -41,8 +41,3 @@ const changeCount = (event) => {
   padding-top: 0.7rem;
 }
 </style>
-
-
-
-
-
