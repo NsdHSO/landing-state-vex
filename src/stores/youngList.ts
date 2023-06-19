@@ -1,5 +1,11 @@
 import { defineStore } from 'pinia'
 
+export interface Young {
+  group: string
+  count: number
+  leader: string
+}
+
 export const useYoungList = defineStore(
   'young-list',
 
@@ -16,7 +22,7 @@ export const useYoungList = defineStore(
           count: 50,
           leader: 'Baci'
         }
-      ]
+      ] as Young[]
     }),
     getters: {},
     actions: {

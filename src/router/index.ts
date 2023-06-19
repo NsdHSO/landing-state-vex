@@ -30,7 +30,7 @@ const router = createRouter({
           component: DashboadView,
           children: [
             {
-              path: 'edit',
+              path: 'edit/:id',
               name: 'editYongList',
               component: EditYoungListView
             }

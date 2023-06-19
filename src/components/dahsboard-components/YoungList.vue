@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DataTable from '@/components/table/DataTable.vue'
-import { useYoungList } from '@/stores/youngList'
+import { useYoungList, Young } from '@/stores/youngList'
 import { useRouter } from 'vue-router'
 
 /**
@@ -21,8 +21,11 @@ const router = useRouter()
  *
  * @param {Event} event - The click event object.
  */
-const changeCount = (event) => {
-  router.push('/landing-state-vex/dashboard/edit')
+const changeCount = (event: Young) => {
+  router.push({
+    name: 'editYongList',
+    params: { id: String(event.group) }
+  })
 }
 </script>
 
