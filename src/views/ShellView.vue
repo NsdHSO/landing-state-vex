@@ -13,6 +13,7 @@ import SideBar from '@/components/SideBarComponent.vue'
     </div>
     <div class="shell-container__content">
       <RouterView />
+
     </div>
   </div>
 </template>

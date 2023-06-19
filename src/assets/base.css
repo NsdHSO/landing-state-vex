@@ -1,93 +1,109 @@
 /* color palette from <https://github.com/vuejs/theme> */
 
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+    --vt-c-white: #ffffff;
+    --vt-c-white-soft: #f8f8f8;
+    --vt-c-white-mute: #f2f2f2;
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
-  --vt-link-active-teal: #107e7d;
-  --vt-active-bg: #e3e3e3;
-  --vt-link-deactivate-purple: #610345;
-  --vt-c-indigo: #2c3e50;
-  --vt-hover: #8ab0ab;
+    --vt-c-black: #181818;
+    --vt-c-black-soft: #222222;
+    --vt-c-black-mute: #282828;
+    --vt-link-active-teal: #107e7d;
+    --vt-active-bg: #e3e3e3;
+    --vt-link-deactivate-purple: #610345;
+    --vt-c-indigo: #2c3e50;
+    --vt-hover: #8ab0ab;
 
-  --vt-primary: #5e6455;
-  --vt-primary-text: #333333;
-  --vt-light-text: #a7abdd;
-  --vt-light-bg: #d1d1d1;
-  --vt-light-priamry: #ead94c;
-  --vt-light-active: #dd7373;
-  --vt-light-active-bg: rgba(255, 255, 255, 0.83);
-  --vt-light-border: #51a3a;
-  --vt-light-link-deactivate-purple: #baa2b0;
-  --vt-hover-dark: rgb(118 134 97);
+    --vt-primary: #5e6455;
+    --vt-primary-text: #333333;
+    --vt-light-text: #a7abdd;
+    --vt-light-bg: #d1d1d1;
+    --vt-light-priamry: #ead94c;
+    --vt-light-active: #eca1a1;
+    --vt-light-active-bg: rgba(255, 255, 255, 0.83);
+    --vt-light-border: #51a3a;
+    --vt-light-link-deactivate-purple: #baa2b0;
+    --vt-table-light-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+    --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
+    --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
+    --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+    --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+    --vt-c-text-light-1: var(--vt-c-indigo);
+    --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+    --vt-c-text-dark-1: var(--vt-c-white);
+    --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+    --vt-hover-dark: rgb(118 134 97);
+    --vt-table-dark-zebra-header: #dff5be8f;
+    --vt-table-dark-zebra-data-cell: #2b2b2ba3;
+    --vt-table-dark-box-shadow: 0px 1px 8px 6px rgb(0 0 0 / 70%), 1px 2px 4px 0px rgb(0 0 0 / 70%), -1px -1px 20px 7px rgb(0 0 0 / 70%), 2px 4px 16px 0px rgb(139 156 156 / 70%);
+    --vt-table-dark-zebra-data-cell-hover: var(--vt-c-white)
+
+
 }
+
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-light-bg);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-hover);
-  --color-sidebar-back: var(--vt-light-text);
-  --color-active-link: var(--vt-light-active);
-  --color-bg-active-link: var(--vt-active-bg);
-  --color-deactive-link: var(--vt-light-link-deactivate-purple);
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-  --color-hover: var(--vt-hover);
-  --section-gap: 160px;
+    --color-background: var(--vt-light-bg);
+    --color-background-soft: var(--vt-c-white-soft);
+    --color-background-mute: var(--vt-c-white-mute);
+    --color-border: var(--vt-c-divider-light-2);
+    --color-border-hover: var(--vt-hover);
+    --color-sidebar-back: var(--vt-light-text);
+    --color-active-link: var(--vt-light-active);
+    --color-bg-active-link: var(--vt-active-bg);
+    --color-deactive-link: var(--vt-light-link-deactivate-purple);
+    --color-heading: var(--vt-c-text-light-1);
+    --color-text: var(--vt-c-text-light-1);
+    --color-hover: var(--vt-hover);
+    --section-gap: 160px;
+    --color-zebra-header: var(--color-active-link);
+    --color-zebra-cell: var(--vt-table-dark-zebra-data-cell);
+    --shadow-table: var(--vt-table-light-box-shadow);
+    --color-text-table-hover: var(--vt-table-dark-zebra-data-cell-hover)
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-    --color-sidebar-back: var(--vt-primary);
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-    --color-active-link: var(--vt-link-active-teal);
-    --color-bg-active-link: var(--vt-light-active-bg);
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-    --color-deactive-link: var(--vt-light-link-deactivate-purple);
-    --color-hover: var(--vt-hover-dark);
-  }
+    :root {
+        --color-background: var(--vt-c-black);
+        --color-background-soft: var(--vt-c-black-soft);
+        --color-background-mute: var(--vt-c-black-mute);
+        --color-sidebar-back: var(--vt-primary);
+        --color-border: var(--vt-c-divider-dark-2);
+        --color-border-hover: var(--vt-c-divider-dark-1);
+        --color-active-link: var(--vt-link-active-teal);
+        --color-bg-active-link: var(--vt-light-active-bg);
+        --color-heading: var(--vt-c-text-dark-1);
+        --color-text: var(--vt-c-text-dark-2);
+        --color-deactive-link: var(--vt-light-link-deactivate-purple);
+        --color-hover: var(--vt-hover-dark);
+        --color-zebra-header: var(--vt-table-dark-zebra-header);
+        --color-zebra-cell: var(--vt-table-dark-zebra-data-cell);
+        --shadow-table: var(--vt-table-dark-box-shadow);
+        --color-text-table-hover: var(--vt-table-dark-zebra-data-cell-hover)
+    }
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
 }
 
 body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition: color 0.5s, background-color 0.5s;
+    line-height: 1.6;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
     Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

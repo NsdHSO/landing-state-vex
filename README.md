@@ -8,8 +8,10 @@
     I want to create an application that has 
 
 ```
-- [ ] Shell Page
-- [ ] Dashboard Page
+- [X] Shell Page
+- [X] Dashboard Page
+    - [ ] Younger List 
+    - [ ] Meetings 
 - [ ] Users page
 - [ ] Auth Page
 
