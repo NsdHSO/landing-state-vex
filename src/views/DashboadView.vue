@@ -10,10 +10,6 @@ import YoungList from '@/components/dahsboard-components/YoungList.vue'
       </div>
       <div class="container-dashboard-first-row__division">TESD</div>
     </div>
-    <div class="container-dashboard-second-row">
-      <div class="container-dashboard-second-row__division">sdddds</div>
-      <div class="container-dashboard-second-row__division">dasd</div>
-    </div>
   </div>
   <router-view v-slot="{ Component, route }">
     <transition name="bounce">
