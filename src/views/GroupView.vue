@@ -41,7 +41,7 @@ const handleSubmit = () => {
 <template>
   <form class="form" @submit.prevent="handleSubmit">
     <div class="form-submit">
-      <button>Send Data</button>
+      <button>{{ route.params.id === 'new' ? 'Create new Group' : 'Send Edit the group' }}</button>
     </div>
     <div class="form-group">
       <div class="form-group-cat">
@@ -49,6 +49,7 @@ const handleSubmit = () => {
         <input
           v-model="groupNumber"
           placeholder="Group Number"
+          :disabled="route.params.id !== 'new'"
           :readonly="route.params.id !== 'new'"
           type="number"
         />
