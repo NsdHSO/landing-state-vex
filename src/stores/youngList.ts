@@ -15,26 +15,25 @@ export const useYoungList = defineStore(
         {
           group: '7',
           count: 10,
-          leader: 'Ivan'
+          leader: 'Raul C'
         },
         {
           group: '3',
           count: 50,
-          leader: 'Baci'
+          leader: 'Emanuel A'
         }
       ] as Young[]
     }),
     getters: {},
     actions: {
-      modifiedCountNumber(group: number, payload: any) {
-        this.young.find((young) => +young.group === +group).count = payload
+      pickOneYoung(idxGroup: number) {
+        return this.young.find((young: Young) => +young.group === idxGroup)
       },
-
-      pickOneYoung(idx: number) {
-        console.log(idx)
-        return this.young.find((young: Young) => {
-          return +young.group === idx
-        })
+      changeOneEntry(idxGroup: number, payload: Young) {
+        const index = this.young.findIndex((young) => young.group === payload.group)
+        if (index !== -1) {
+          this.young[index] = payload
+        }
       }
     }
   }

@@ -6,10 +6,11 @@ const route = useRoute()
 </script>
 
 <template>
-  <div v-if="route.params.id > 0">
-    <GroupView />
-  </div>
-  <div v-else>new</div>
+  <GroupView class="group-slot" />
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.group-slot {
+  padding: 1rem;
+}
+</style>
