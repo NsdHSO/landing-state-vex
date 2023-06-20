@@ -28,6 +28,13 @@ export const useYoungList = defineStore(
     actions: {
       modifiedCountNumber(group: number, payload: any) {
         this.young.find((young) => +young.group === +group).count = payload
+      },
+
+      pickOneYoung(idx: number) {
+        console.log(idx)
+        return this.young.find((young: Young) => {
+          return +young.group === idx
+        })
       }
     }
   }
