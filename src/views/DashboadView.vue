@@ -11,7 +11,7 @@ import YoungList from '@/components/dahsboard-components/YoungList.vue'
         query: { component: 'LayoutComponent' }
       }"
     >
-      <button>new Group</button>
+      <button>Add Group</button>
     </router-link>
   </div>
   <div class="container-dashboard">
