@@ -20,13 +20,15 @@ const router = useRouter()
  * Handles the click event on a row in the table.
  *
  * @param {Event} event - The click event object.
+ * @param {String} component - Component What render
  */
-const changeCount = (event: Young) => {
+const changeCount = (event: Young, component: string) => {
   router.push({
     name: 'editYoungList',
     params: {
-      id: String(event.group)
-    }
+      id: event.group
+    },
+    query: { component }
   })
 }
 </script>
@@ -36,7 +38,7 @@ const changeCount = (event: Young) => {
     <DataTable
       :data-source="youngStore.young"
       :show-cells="['group', 'count', 'leader']"
-      @press-on-the-row="changeCount($event)"
+      @press-on-the-row="changeCount($event, 'LayoutComponent')"
     />
   </div>
 </template>
