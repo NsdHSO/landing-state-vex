@@ -18,7 +18,7 @@ const renderDynamicComponent = (id, component) => {
 const handleClickOutside = (event) => {
   if (event.target.children[0]?.className === 'container-young') {
     // Perform the navigation action, e.g., go back to the previous route
-    router.back()
+    router.push('/landing-state-vex/dashboard')
   }
 }
 

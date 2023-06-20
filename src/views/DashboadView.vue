@@ -3,6 +3,17 @@ import YoungList from '@/components/dahsboard-components/YoungList.vue'
 </script>
 
 <template>
+  <div class="form-submit">
+    <router-link
+      :to="{
+        name: 'editYoungList',
+        params: { id: 'new' },
+        query: { component: 'LayoutComponent' }
+      }"
+    >
+      <button>new Group</button>
+    </router-link>
+  </div>
   <div class="container-dashboard">
     <div class="container-dashboard-first-row">
       <div class="container-dashboard-first-row__division">
@@ -60,6 +71,29 @@ import YoungList from '@/components/dahsboard-components/YoungList.vue'
   //}
   100% {
     transform: translate(0);
+  }
+}
+
+.form-submit {
+  align-items: center;
+  height: 3rem;
+  display: flex;
+  flex-direction: row-reverse;
+
+  button {
+    height: 2rem;
+    background: var(--color-sidebar-back);
+    border: 1px solid var(--color-active-link);
+    border-radius: 0.8rem;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    &:hover {
+      background: var(--color-primary-hover);
+      font-weight: 700;
+      color: #fdfffe;
+    }
   }
 }
 </style>

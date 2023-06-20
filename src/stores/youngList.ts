@@ -34,6 +34,9 @@ export const useYoungList = defineStore(
         if (index !== -1) {
           this.young[index] = payload
         }
+      },
+      addOneEntry(payload: Young) {
+        this.young.push({ ...payload })
       }
     }
   }

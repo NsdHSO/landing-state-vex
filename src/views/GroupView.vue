@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { useYoungList } from '@/stores/youngList'
 
@@ -7,6 +7,7 @@ const groupNumber = ref('')
 const countNumber = ref('')
 const leaderName = ref('')
 const route = useRoute()
+const router = useRouter()
 const youngStore = useYoungList()
 
 onMounted(() => {
@@ -18,11 +19,22 @@ onMounted(() => {
   }
 })
 const handleSubmit = () => {
-  youngStore.changeOneEntry(+groupNumber.value, {
-    group: groupNumber.value,
-    count: +countNumber.value,
-    leader: leaderName.value
-  })
+  if (route.params.id === 'new') {
+    if (groupNumber.value > 0) {
+      youngStore.addOneEntry({
+        group: groupNumber.value,
+        count: +countNumber.value,
+        leader: leaderName.value
+      })
+      router.push('/landing-state-vex/dashboard')
+    }
+  } else {
+    youngStore.changeOneEntry(+groupNumber.value, {
+      group: groupNumber.value,
+      count: +countNumber.value,
+      leader: leaderName.value
+    })
+  }
 }
 </script>
 
