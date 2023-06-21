@@ -18,7 +18,6 @@ export default ({ mode }) => {
     ...loadEnv(mode, process.cwd())
   }
   return defineConfig({
-    // base : ? 'landing-state-vex' : '',
     base: process.env.VITE_API_KEY !== 'false' ? 'landing-state-vex' : '',
     plugins: [vue(), vueJsx()],
     resolve: {
