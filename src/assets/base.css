@@ -34,6 +34,7 @@
   --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
   --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-1-transition: var(--vt-primary-text);
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
@@ -61,6 +62,8 @@
   --color-deactive-link: var(--vt-light-link-deactivate-purple);
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
+  --color-text-transition: var(--vt-c-text-light-1-transition);
+  --color-text-transition-intermediate: var(--vt-c-text-light-1);
   --color-hover: var(--vt-hover);
   --section-gap: 160px;
   --color-zebra-header: var(--color-active-link);
@@ -84,6 +87,8 @@
     --color-bg-active-link: var(--vt-light-active-bg);
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
+    --color-text-transition: var(--vt-c-text-light-1);
+    --color-text-transition-intermediate: var(--vt-c-text-light-1);
     --color-deactive-link: var(--vt-light-link-deactivate-purple);
     --color-hover: var(--vt-hover-dark);
     --color-zebra-header: var(--vt-table-dark-zebra-header);

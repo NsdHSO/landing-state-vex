@@ -4,7 +4,6 @@
   <div class="container-auth">
     <div class="container-auth__data">
       <RouterView />
-      <div>login</div>
     </div>
   </div>
 </template>
@@ -26,12 +25,6 @@
     font-weight: 500;
     width: 20vw;
     height: 60vh;
-
-    &:hover {
-      background: var(--color-primary-hover);
-      font-weight: 700;
-      color: #fdfffe;
-    }
   }
 }
 </style>
