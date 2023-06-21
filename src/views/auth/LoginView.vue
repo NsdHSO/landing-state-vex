@@ -1,4 +1,36 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+//Credential reactive
+import { reactive, ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
+
+const credentials = reactive({
+  email: '',
+  password: ''
+})
+const emailIsNotValid = ref(false)
+const passwordIsNotValid = ref(false)
+const authStore = useAuthStore()
+const loginHandle = () => {
+  const regexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!credentials.email || !credentials.password) {
+    console.log('Your username and password it is a must  ')
+  } else {
+    if (regexPattern.test(credentials.email) && credentials.password.length >= 6) {
+      authStore.registerWithEmail(credentials)
+      credentials.email = ''
+      credentials.password = ''
+      emailIsNotValid.value = false
+      passwordIsNotValid.value = false
+    }
+    if (!regexPattern.test(credentials.email)) {
+      emailIsNotValid.value = true
+    }
+    if (credentials.password.length < 6) {
+      passwordIsNotValid.value = true
+    }
+  }
+}
+</script>
 
 <template>
   <div class="container-login">
@@ -6,16 +38,21 @@
       <p>Landing</p>
     </div>
     <div class="container-login__form">
-      <form>
+      <form @submit.prevent="loginHandle">
         <div class="container-login__form-division">
           <label>Username</label>
-          <input placeholder="joshi100" />
+          <input placeholder="joshi100@fardex.com" v-model="credentials.email" type="email" />
+          <p v-if="emailIsNotValid" class="container-login__form-division-error">
+            Email is not valid
+          </p>
         </div>
         <div class="container-login__form-division">
           <label>Password</label>
-          <input placeholder="********" type="password" />
+          <input placeholder="********" type="password" v-model="credentials.password" />
+          <p v-if="passwordIsNotValid" class="container-login__form-division-error">
+            Password is to short
+          </p>
         </div>
-
         <div class="container-login__form-submit">
           <button>Login</button>
         </div>
@@ -77,6 +114,10 @@
           &:focus-visible {
             outline: none;
           }
+        }
+
+        &-error {
+          color: #f14668;
         }
       }
 
