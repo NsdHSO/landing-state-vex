@@ -12,9 +12,7 @@ import SideBar from '@/components/SideBarComponent.vue'
       <SideBar :routes="$route.meta.routes" />
     </div>
     <div class="shell-container__content">
-      <div>
-        <router-view></router-view>
-      </div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -55,6 +53,6 @@ import SideBar from '@/components/SideBarComponent.vue'
 
 .shell-container__content {
   padding: 4rem 1rem 1rem 4rem;
-  height: calc(100vh);
+  height: calc(100vh - 64px);
 }
 </style>

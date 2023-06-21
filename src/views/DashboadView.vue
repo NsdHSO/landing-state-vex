@@ -66,9 +66,9 @@ import YoungList from '@/components/dahsboard-components/YoungList.vue'
   0% {
     transform: translateY(40rem) translateX(+200rem);
   }
-  //50% {
-  //  transform: scale(1.25);
-  //}
+  50% {
+    transform: scale(1.25);
+  }
   100% {
     transform: translate(0);
   }
@@ -79,6 +79,7 @@ import YoungList from '@/components/dahsboard-components/YoungList.vue'
   height: 3rem;
   display: flex;
   flex-direction: row-reverse;
+  padding-top: 1rem;
 
   button {
     height: 2rem;

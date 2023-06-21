@@ -27,12 +27,14 @@ const router = createRouter({
       children: [
         {
           path: 'dashboard',
+          name: 'Dashboard',
           component: DashboadView,
           children: [
             {
               path: 'edit/:id',
               name: 'editYoungList',
-              component: EditYoungListView
+              component: EditYoungListView,
+              props: true
             }
           ]
         },
@@ -43,6 +45,11 @@ const router = createRouter({
         {
           path: '',
           redirect: '/landing-state-vex/dashboard'
+        },
+        {
+          path: '/:catchAll(.*)',
+          name: 'NotFound',
+          component: () => import('./../views/NotFoundView.vue')
         }
       ]
     },
