@@ -11,6 +11,9 @@ const double = computed(() => ate.doubleCount)
     <div class="header-container__search" @click="ate.decrement()">TES</div>
     <div>{{ ate.count }}, Double {{ double }}</div>
     <div @click="ate.increment()">Items</div>
+    <router-link :to="{ name: 'Login' }">
+      <button>LOGIN</button>
+    </router-link>
   </div>
 </template>
 
