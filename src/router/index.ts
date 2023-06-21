@@ -53,6 +53,24 @@ const router = createRouter({
         }
       ]
     },
+
+    {
+      path: '/auth',
+      name: 'Auth',
+      component: () => import('./../views/auth/LandingView.vue'),
+      children: [
+        {
+          path: 'register',
+          name: 'Register',
+          component: () => import('./../views/auth/RegisterView.vue')
+        },
+        {
+          path: 'login',
+          name: 'Login',
+          component: () => import('./../views/auth/LoginView.vue')
+        }
+      ]
+    },
     {
       path: '',
       redirect: '/landing-state-vex'
