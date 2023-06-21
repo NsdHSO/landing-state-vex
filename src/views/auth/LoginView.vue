@@ -15,6 +15,10 @@
           <label>Password</label>
           <input placeholder="********" type="password" />
         </div>
+
+        <div class="container-login__form-submit">
+          <button>Login</button>
+        </div>
       </form>
     </div>
   </div>
@@ -63,6 +67,8 @@
           padding-left: 0.5rem;
           transition: 0.2s all;
           font-size: 1rem;
+          caret-color: var(--color-active-link);
+          caret-shape: block;
 
           &:focus {
             opacity: 0.9;
@@ -73,6 +79,34 @@
           }
         }
       }
+
+      .container-login__form-submit {
+        height: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        button {
+          height: 2rem;
+          background: var(--color-sidebar-back);
+          border: 1px solid var(--color-active-link);
+          border-radius: 0.8rem;
+          color: var(--color-text);
+          font-size: 0.9rem;
+          font-weight: 500;
+
+          &:hover {
+            background: var(--color-primary-hover);
+            font-weight: 700;
+            color: #fdfffe;
+          }
+        }
+      }
+    }
+
+    @media only screen and (min-width: 959px) and (max-width: 1109px) {
+      padding: 2rem;
     }
   }
 }

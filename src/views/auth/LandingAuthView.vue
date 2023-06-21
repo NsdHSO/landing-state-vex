@@ -25,6 +25,11 @@
     font-weight: 500;
     width: 20vw;
     height: 60vh;
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (min-width: 368px) and (max-width: 959px) {
+      width: 100vw;
+      height: 100vh;
+    }
   }
 }
 </style>
