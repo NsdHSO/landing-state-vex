@@ -86,6 +86,7 @@ const loginHandle = () => {
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      align-items: center;
 
       .container-login__form-division {
         display: flex;
