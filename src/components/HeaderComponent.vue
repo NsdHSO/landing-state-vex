@@ -12,7 +12,7 @@ const double = computed(() => ate.doubleCount)
     <div>{{ ate.count }}, Double {{ double }}</div>
     <div @click="ate.increment()">Items</div>
     <router-link :to="{ name: 'Login' }">
-      <button>LOGIN</button>
+      <button>LOGIN PAGE</button>
     </router-link>
   </div>
 </template>
