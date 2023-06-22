@@ -60,7 +60,7 @@ const router = createRouter({
       component: () => import('../views/auth/LandingAuthView.vue'),
       children: [
         {
-          path: 'login',
+          path: ':id',
           name: 'Login',
           component: () => import('./../views/auth/LoginView.vue')
         },
