@@ -2,7 +2,10 @@
 //Credential reactive
 import { reactive, ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
+const idParameter = ref(route.params.id)
 const credentials = reactive({
   email: '',
   password: ''
@@ -15,13 +18,18 @@ const loginHandle = () => {
   if (!credentials.email || !credentials.password) {
     console.log('Your username and password it is a must  ')
   } else {
-    if (regexPattern.test(credentials.email) && credentials.password.length >= 6) {
-      authStore.registerWithEmail(credentials)
-      credentials.email = ''
-      credentials.password = ''
-      emailIsNotValid.value = false
-      passwordIsNotValid.value = false
+    if (idParameter.value === 'register') {
+      if (regexPattern.test(credentials.email) && credentials.password.length >= 6) {
+        authStore.registerWithEmail(credentials)
+        credentials.email = ''
+        credentials.password = ''
+        emailIsNotValid.value = false
+        passwordIsNotValid.value = false
+      }
+    } else {
+      authStore.loginWithEmail(credentials)
     }
+
     if (!regexPattern.test(credentials.email)) {
       emailIsNotValid.value = true
     }
@@ -54,7 +62,9 @@ const loginHandle = () => {
           </p>
         </div>
         <div class="container-login__form-submit">
-          <button>Login</button>
+          <button>
+            {{ route.params.id === 'register' ? 'Register' : 'Login' }}
+          </button>
         </div>
       </form>
     </div>

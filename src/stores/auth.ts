@@ -13,7 +13,9 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: {}
   }),
-  getters: {},
+  getters: {
+    state: () => {}
+  },
   actions: {
     registerWithEmail(credentaial: UserCredential) {
       createUserWithEmailAndPassword(auth, credentaial.email, credentaial.password)
@@ -26,13 +28,29 @@ export const useAuthStore = defineStore('auth', {
       signInWithEmailAndPassword(auth, credential.email, credential.password)
         .then((userCredentials) => {
           // Signed in
-          this.user = userCredentials
+          if (userCredentials) {
+            this.user = userCredentials.user
+            this.router.push('/')
+          } else {
+            this.user = {}
+          }
         })
         .catch((error) => {
           const errorCode = error.code
           const errorMessage = error.message
         })
-    }
+    },
     //register with firebase create user with name and password
+    logOut() {
+      localStorage.clear()
+      this.user = {}
+      this.router.push({
+        name: 'Login',
+        params: { id: 'login' }
+      })
+    }
+  },
+  persist: {
+    storage: localStorage // data in sessionStorage is cleared when the page session ends.
   }
 })

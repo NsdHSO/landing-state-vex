@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { useCounterStore } from '@/stores/counter'
 import { computed } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 
 const ate = useCounterStore()
 const double = computed(() => ate.doubleCount)
+const authStore = useAuthStore()
+const navigateTo = () => {
+  authStore.logOut()
+}
 </script>
 
 <template>
@@ -11,9 +16,9 @@ const double = computed(() => ate.doubleCount)
     <div class="header-container__search" @click="ate.decrement()">TES</div>
     <div>{{ ate.count }}, Double {{ double }}</div>
     <div @click="ate.increment()">Items</div>
-    <router-link :to="{ name: 'Login' }">
-      <button>LOGIN PAGE</button>
-    </router-link>
+    <div class="header-container__action">
+      <button @click="navigateTo">Log out</button>
+    </div>
   </div>
 </template>
 
@@ -24,5 +29,23 @@ const double = computed(() => ate.doubleCount)
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  &__action {
+    button {
+      height: 2rem;
+      background: var(--color-sidebar-back);
+      border: 1px solid var(--color-active-link);
+      border-radius: 0.8rem;
+      color: var(--color-text);
+      font-size: 0.9rem;
+      font-weight: 500;
+
+      &:hover {
+        background: var(--color-primary-hover);
+        font-weight: 700;
+        color: #fdfffe;
+      }
+    }
+  }
 }
 </style>

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DashboadView from '@/views/DashboadView.vue'
 import UsersView from '@/views/UsersView.vue'
 import EditYoungListView from '@/views/EditYoungListView.vue'
+import { useAuthStore } from '@/stores/auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -75,6 +76,16 @@ const router = createRouter({
       redirect: '/landing-state-vex'
     }
   ]
+})
+
+router.beforeEach(async (to, from) => {
+  const authStore = useAuthStore()
+  if (!authStore.user.uid && to.name !== 'Login') {
+    return '/auth/login'
+  }
+  if (authStore.user.uid && to.name == 'Login') {
+    return { name: 'Dashboard' }
+  }
 })
 
 export default router
