@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/firebase'
 //import auht from firebase
 export const useAuthStore = defineStore(
-  'counter',
+  'auth',
 
   {
     state: () => ({}),
