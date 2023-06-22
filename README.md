@@ -1,24 +1,25 @@
 # landing-state-vex
 
-## Motivation 
+## Motivation
+
 ```markdown
     I want to experiment with vue.
-    I'm an angular developer, but it seems to me that angular is in decline. 
+    I'm an angular developer, but it seems to me that angular is in decline.
     It goes in a direction towards populism, this mentality is not always good for it.
-    I want to create an application that has 
-
+    I want to create an application that has
 ```
-- [X] Shell Page
-- [X] Dashboard Page
-    - [ ] Younger List 
-    - [ ] Meetings 
+
+- [x] Shell Page
+- [x] Dashboard Page
+  - [ ] Younger List
+  - [ ] Meetings
 - [ ] Users page
 - [ ] Auth Page
 
 ## Development
-```markdown
-We can use FontawesomeIcon like
-    <icon :icon="['fas','user-secret']" />
+
+```html
+We can use FontawesomeIcon like <vex-icon :icon="['fas','user-secret']" />
 ```
 
 ## Project Setup
