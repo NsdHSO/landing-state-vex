@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import YoungList from '@/components/dahsboard-components/YoungList.vue'
+import { onMounted } from 'vue'
+import { useYoungList } from '@/stores/youngList'
+
+const youngStore = useYoungList()
+onMounted(() => {
+  youngStore.getYoung()
+})
 </script>
 
 <template>

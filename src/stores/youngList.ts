@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import { db } from '../../firebase/firebase'
+import { collection, getDocs } from 'firebase/firestore'
 
 export interface Young {
   group: string
@@ -6,26 +8,24 @@ export interface Young {
   leader: string
 }
 
+const young = collection(db, 'youngList')
+const docs = await getDocs(young)
 export const useYoungList = defineStore(
   'young-list',
 
   {
     state: () => ({
-      young: [
-        {
-          group: '7',
-          count: 10,
-          leader: 'Raul C'
-        },
-        {
-          group: '3',
-          count: 50,
-          leader: 'Emanuel A'
-        }
-      ] as Young[]
+      young: [] as Young[]
     }),
     getters: {},
     actions: {
+      async getYoung() {
+        if (docs) {
+          docs.forEach((doc) => {
+            this.young.push(doc.data() as any)
+          })
+        }
+      },
       pickOneYoung(idxGroup: number) {
         return this.young.find((young: Young) => +young.group === idxGroup)
       },

@@ -40,6 +40,7 @@ const removeAction = (event) => {
 <template>
   <div class="young-list-container">
     <DataTable
+      v-if="youngStore.young.length"
       :data-source="youngStore.young"
       :show-cells="['group', 'count', 'leader']"
       :action-row="{ show: true, title: 'Action', iconName: ['fas', 'plus'] }"
