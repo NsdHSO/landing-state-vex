@@ -10,7 +10,7 @@ export interface Young {
 }
 
 const youngCollection = collection(db, 'youngList')
-const docs = await getDocs(youngCollection)
+const docs = getDocs(youngCollection)
 export const useYoungList = defineStore(
   'youngCollection',
 
@@ -26,7 +26,7 @@ export const useYoungList = defineStore(
     actions: {
       async getYoung() {
         if (docs) {
-          docs.forEach((doc) => {
+          await docs?.forEach((doc) => {
             this.young.push({
               ...doc.data(),
               uid: doc.id
