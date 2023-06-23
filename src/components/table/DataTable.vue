@@ -3,7 +3,11 @@ interface DataTable {
   dataSource: any
   showCells: string[]
   zebra?: boolean
-  actionRow?: { show: boolean; title: string }
+  actionRow?: {
+    show: boolean
+    title: string
+    iconName: string[]
+  }
 }
 
 defineProps<DataTable>()
@@ -27,8 +31,12 @@ defineProps<DataTable>()
       >
         {{ rows[showCell] }}
       </td>
-      <td v-if="actionRow?.show" class="row-content-action">
-        <vex-icon :icon="['fas', 'plus']" class="fa-2xl row-content-action__icon" />
+      <td
+        v-if="actionRow?.show"
+        class="row-content-action"
+        @click="$emit('pressOnTheAction', rows)"
+      >
+        <vex-icon :icon="actionRow.iconName" class="fa-2xl row-content-action__icon" />
       </td>
     </tr>
   </table>

@@ -31,6 +31,10 @@ const changeCount = (event: Young, component: string) => {
     query: { component }
   })
 }
+
+const removeAction = (event) => {
+  console.log(event)
+}
 </script>
 
 <template>
@@ -38,8 +42,9 @@ const changeCount = (event: Young, component: string) => {
     <DataTable
       :data-source="youngStore.young"
       :show-cells="['group', 'count', 'leader']"
+      :action-row="{ show: true, title: 'Action', iconName: ['fas', 'plus'] }"
       @press-on-the-row="changeCount($event, 'LayoutComponent')"
-      :action-row="{ show: true, title: 'Action' }"
+      @press-on-the-action="removeAction($event)"
     />
   </div>
 </template>
