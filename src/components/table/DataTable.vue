@@ -1,8 +1,9 @@
 <script setup lang="ts">
 interface DataTable {
   dataSource: any
-  zebra?: boolean
   showCells: string[]
+  zebra?: boolean
+  actionRow?: { show: boolean; title: string }
 }
 
 defineProps<DataTable>()
@@ -14,15 +15,20 @@ defineProps<DataTable>()
       <th v-for="(header, keyHeader) of Object.keys(dataSource[0])" :key="keyHeader">
         {{ header.slice(0, 1).toUpperCase() + header.slice(1) }}
       </th>
+      <th v-if="actionRow?.show">
+        {{ actionRow.title }}
+      </th>
     </tr>
-    <tr
-      v-for="(rows, keyRow) of dataSource"
-      :key="keyRow"
-      @click="$emit('pressOnTheRow', rows)"
-      class="row-content"
-    >
-      <td v-for="(showCell, keyCell) of showCells" :key="keyCell">
+    <tr v-for="(rows, keyRow) of dataSource" :key="keyRow" class="row-content">
+      <td
+        v-for="(showCell, keyCell) of showCells"
+        :key="keyCell"
+        @click="$emit('pressOnTheRow', rows)"
+      >
         {{ rows[showCell] }}
+      </td>
+      <td v-if="actionRow?.show" class="row-content-action">
+        <vex-icon :icon="['fas', 'plus']" class="fa-2xl row-content-action__icon" />
       </td>
     </tr>
   </table>
@@ -58,6 +64,12 @@ table {
 
         td {
           color: var(--color-text-table-hover);
+        }
+      }
+
+      .row-content-action {
+        &__icon {
+          color: var(--color-danger);
         }
       }
     }

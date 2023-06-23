@@ -39,6 +39,7 @@ const changeCount = (event: Young, component: string) => {
       :data-source="youngStore.young"
       :show-cells="['group', 'count', 'leader']"
       @press-on-the-row="changeCount($event, 'LayoutComponent')"
+      :action-row="{ show: true, title: 'Action' }"
     />
   </div>
 </template>
