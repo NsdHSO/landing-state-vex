@@ -6,7 +6,11 @@ interface DataTable {
   actionRow?: {
     show: boolean
     title: string
-    iconName: string[]
+    icons: {
+      iconName: string[]
+      actionPress: string
+      className?: string
+    }[]
   }
 }
 
@@ -31,12 +35,14 @@ defineProps<DataTable>()
       >
         {{ rows[showCell] }}
       </td>
-      <td
-        v-if="actionRow?.show"
-        class="row-content-action"
-        @click="$emit('pressOnTheAction', rows)"
-      >
-        <vex-icon :icon="actionRow.iconName" class="fa-2xl row-content-action__icon" />
+      <td v-if="actionRow?.show" class="row-content-action">
+        <div v-for="item in actionRow.icons" @click="$emit(item.actionPress, rows)" :key="item">
+          <vex-icon
+            :icon="item.iconName"
+            class="fa-2xl row-content-action__icon"
+            :class="item.className"
+          />
+        </div>
       </td>
     </tr>
   </table>
@@ -78,6 +84,10 @@ table {
       .row-content-action {
         &__icon {
           color: var(--color-danger);
+        }
+
+        &__45 {
+          transform: rotate(45deg);
         }
       }
     }

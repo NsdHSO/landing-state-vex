@@ -43,7 +43,17 @@ const removeAction = (event) => {
       v-if="youngStore.young.length"
       :data-source="youngStore.young"
       :show-cells="['group', 'count', 'leader']"
-      :action-row="{ show: true, title: 'Action', iconName: ['fas', 'plus'] }"
+      :action-row="{
+        show: true,
+        title: 'Action',
+        icons: [
+          {
+            iconName: ['fas', 'plus'],
+            actionPress: 'pressOnTheAction',
+            className: 'row-content-action__45'
+          }
+        ]
+      }"
       @press-on-the-row="changeCount($event, 'LayoutComponent')"
       @press-on-the-action="removeAction($event)"
     />
