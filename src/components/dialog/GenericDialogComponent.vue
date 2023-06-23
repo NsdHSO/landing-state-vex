@@ -36,6 +36,10 @@ defineProps({
     button {
       padding: 0.2rem 1rem;
       font-size: 1.3rem;
+
+      &:hover {
+        opacity: 0.6;
+      }
     }
 
     &-yes {

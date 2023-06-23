@@ -6,23 +6,31 @@ defineProps({
 
 <template>
   <teleport to="body">
-    <div v-if="openDialog" class="modal">
-      <slot />
+    <div v-if="openDialog" class="modal-container">
+      <div class="modal-container-slot">
+        <slot />
+      </div>
     </div>
   </teleport>
 </template>
 
-<style scoped>
-.modal {
+<style scoped lang="scss">
+.modal-container {
   position: absolute;
-  z-index: 999;
-  top: 20%;
-  left: 50%;
-  width: 300px;
-  margin-left: -150px;
-  background: var(--color-sidebar-back);
-  padding: 1rem;
-  box-shadow: var(--shadow-table);
-  border-radius: 1rem;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-slot {
+    width: 300px;
+    background: var(--color-sidebar-back);
+    padding: 1rem;
+    box-shadow: var(--shadow-table);
+    border-radius: 1rem;
+  }
 }
 </style>
