@@ -1,1 +1,0 @@
-import{_ as t,r as o,o as a,b as n,e as _,g as s}from"./index-1e21ad8f.js";const c={},r={class:"container-auth"},d={class:"container-auth__data"};function i(u,l){const e=o("RouterView");return a(),n("div",r,[_("div",d,[s(e)])])}const f=t(c,[["render",i],["__scopeId","data-v-2f9a8b74"]]);export{f as default};
