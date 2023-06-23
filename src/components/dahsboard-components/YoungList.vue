@@ -33,7 +33,7 @@ const changeCount = (event: Young, component: string) => {
 }
 
 const removeAction = (event) => {
-  console.log(event)
+  youngStore.deleteOneYoung(event.uid)
 }
 </script>
 

@@ -2,8 +2,10 @@
 import { useCounterStore } from '@/stores/counter'
 import { computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import { useYoungList } from '@/stores/youngList'
 
 const ate = useCounterStore()
+const youngList = useYoungList()
 const double = computed(() => ate.doubleCount)
 const authStore = useAuthStore()
 const navigateTo = () => {
@@ -16,6 +18,9 @@ const navigateTo = () => {
     <div class="header-container">
       <div class="header-container__search" @click="ate.decrement()">TES</div>
       <div>{{ ate.count }}, Double {{ double }}</div>
+      <div>
+        {{ youngList.groups }}
+      </div>
       <div @click="ate.increment()">Items</div>
     </div>
     <div class="header-container__action">

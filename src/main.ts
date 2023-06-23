@@ -10,15 +10,14 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import App from './App.vue'
 import piniaPluginPersistedState from 'pinia-plugin-persistedstate'
 
+library.add(fas)
 const pinia = createPinia()
-
 pinia.use(({ store }) => {
   store.router = markRaw(router)
 })
 pinia.use(piniaPluginPersistedState)
 
 const app = createApp(App)
-library.add(fas)
 app.use(pinia)
 app.use(router)
 

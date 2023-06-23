@@ -16,7 +16,7 @@ defineProps<DataTable>()
 <template>
   <table>
     <tr>
-      <th v-for="(header, keyHeader) of Object.keys(dataSource[0])" :key="keyHeader">
+      <th v-for="(header, keyHeader) of showCells" :key="keyHeader">
         {{ header.slice(0, 1).toUpperCase() + header.slice(1) }}
       </th>
       <th v-if="actionRow?.show">

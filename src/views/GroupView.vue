@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useYoungList } from '@/stores/youngList'
 
 const groupNumber = ref('')
@@ -20,7 +20,7 @@ onMounted(() => {
 })
 const handleSubmit = () => {
   if (route.params.id === 'new') {
-    if (groupNumber.value > 0) {
+    if (groupNumber.value > 0 && !groupAllowed.value) {
       youngStore.addOneEntry({
         group: groupNumber.value,
         count: +countNumber.value,
@@ -34,14 +34,24 @@ const handleSubmit = () => {
       count: +countNumber.value,
       leader: leaderName.value
     })
+    router.push('/landing-state-vex/dashboard')
   }
 }
+
+const groupAllowed = computed(() => {
+  if (route.params.id !== 'new') {
+    return false
+  }
+  return !!youngStore.groups.find((v) => v === groupNumber.value)
+})
 </script>
 
 <template>
   <form class="form" @submit.prevent="handleSubmit">
     <div class="form-submit">
-      <button>{{ route.params.id === 'new' ? 'Create new Group' : 'Send Edit the group' }}</button>
+      <button :disabled="groupAllowed || +groupNumber <= 0">
+        {{ route.params.id === 'new' ? 'Create new Group' : 'Send Edit the group' }}
+      </button>
     </div>
     <div class="form-group">
       <div class="form-group-cat">
@@ -53,6 +63,7 @@ const handleSubmit = () => {
           :readonly="route.params.id !== 'new'"
           type="number"
         />
+        <p v-if="groupAllowed">Group exist already</p>
       </div>
       <div class="form-group-cat">
         <label>How manny are in group</label>
