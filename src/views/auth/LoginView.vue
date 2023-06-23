@@ -38,12 +38,17 @@ const loginHandle = () => {
     }
   }
 }
+
+const getID = () => {
+  return route.params.id === 'register' ? 'login' : 'register'
+}
 </script>
 
 <template>
   <div class="container-login">
     <div class="container-login__header">
       <p>Landing</p>
+      <p v-if="route.params.id === 'register'">Register</p>
     </div>
     <div class="container-login__form">
       <form @submit.prevent="loginHandle">
@@ -62,6 +67,9 @@ const loginHandle = () => {
           </p>
         </div>
         <div class="container-login__form-submit">
+          <router-link :to="{ name: 'Login', params: { id: getID() } }">
+            {{ route.params.id !== 'register' ? 'Register' : 'Login' }}
+          </router-link>
           <button>
             {{ route.params.id === 'register' ? 'Register' : 'Login' }}
           </button>
@@ -135,9 +143,9 @@ const loginHandle = () => {
       .container-login__form-submit {
         height: 3rem;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
+        width: 100%;
 
         button {
           height: 2rem;
