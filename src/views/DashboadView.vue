@@ -26,7 +26,7 @@ onMounted(() => {
       <div class="container-dashboard-first-row__division">
         <YoungList />
       </div>
-      <div class="container-dashboard-first-row__division">TESD</div>
+      <div class="container-dashboard-first-row__division">TESDA</div>
     </div>
     <div class="container-dashboard-second-row">
       <div class="container-dashboard-second-row__division">sdddds</div>

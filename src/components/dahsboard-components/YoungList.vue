@@ -2,6 +2,7 @@
 import DataTable from '@/components/table/DataTable.vue'
 import { useYoungList, Young } from '@/stores/youngList'
 import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 
 /**
  * Retrieves and manages the young participant list.
