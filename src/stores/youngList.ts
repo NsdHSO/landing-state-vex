@@ -10,7 +10,6 @@ export interface Young {
 }
 
 const youngCollection = collection(db, 'youngList')
-const docs = getDocs(youngCollection)
 export const useYoungList = defineStore(
   'youngCollection',
 
@@ -25,14 +24,13 @@ export const useYoungList = defineStore(
     },
     actions: {
       async getYoung() {
-        if (docs) {
-          await docs?.forEach((doc) => {
-            this.young.push({
-              ...doc.data(),
-              uid: doc.id
-            } as any)
-          })
-        }
+        const docs = await getDocs(youngCollection)
+        docs?.forEach((doc) => {
+          this.young.push({
+            ...doc.data(),
+            uid: doc.id
+          } as any)
+        })
       },
       pickOneYoung(idxGroup: number) {
         return this.young.find((young: Young) => +young.group === idxGroup)

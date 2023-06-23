@@ -3,6 +3,8 @@ import DataTable from '@/components/table/DataTable.vue'
 import { useYoungList, Young } from '@/stores/youngList'
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
+import DialogComponent from '@/components/dialog/DialogComponent.vue'
+import GenericDialogComponent from '@/components/dialog/GenericDialogComponent.vue'
 
 /**
  * Retrieves and manages the young participant list.
@@ -32,9 +34,17 @@ const changeCount = (event: Young, component: string) => {
     query: { component }
   })
 }
-
+const open = ref(false)
+const UID_ENTRY = ref('')
 const removeAction = (event) => {
-  youngStore.deleteOneYoung(event.uid)
+  if (event) {
+    youngStore.deleteOneYoung(UID_ENTRY.value)
+  }
+  open.value = false
+}
+const setUid = (event: Young) => {
+  UID_ENTRY.value = event.uid
+  open.value = true
 }
 </script>
 
@@ -56,9 +66,12 @@ const removeAction = (event) => {
         ]
       }"
       @press-on-the-row="changeCount($event, 'LayoutComponent')"
-      @press-on-the-action="removeAction($event)"
+      @press-on-the-action="setUid($event)"
     />
   </div>
+  <DialogComponent :open-dialog="open">
+    <GenericDialogComponent title="Are you sure" @generic-msg="removeAction($event)" />
+  </DialogComponent>
 </template>
 
 <style scoped lang="scss">

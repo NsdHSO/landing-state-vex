@@ -1,29 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const isDialogVisible = ref(false)
-
-const title = ref('')
-const message = ref('')
+defineProps({
+  openDialog: Boolean
+})
 </script>
 
-<template></template>
+<template>
+  <teleport to="body">
+    <div v-if="openDialog" class="modal">
+      <slot />
+    </div>
+  </teleport>
+</template>
 
-<style scoped lang="scss">
-.dialog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 4px;
-  }
+<style scoped>
+.modal {
+  position: absolute;
+  z-index: 999;
+  top: 20%;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  background: var(--color-sidebar-back);
+  padding: 1rem;
+  box-shadow: var(--shadow-table);
+  border-radius: 1rem;
 }
 </style>
