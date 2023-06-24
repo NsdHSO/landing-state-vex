@@ -68,8 +68,9 @@ const setUid = (event: Young) => {
       @press-on-the-row="changeCount($event, 'LayoutComponent')"
       @press-on-the-action="setUid($event)"
     />
+    <div v-else>Loading</div>
   </div>
-  <DialogComponent :open-dialog="open">
+  <DialogComponent :open-dialog="open" where-project="body">
     <GenericDialogComponent title="Are you sure" @generic-msg="removeAction($event)" />
   </DialogComponent>
 </template>

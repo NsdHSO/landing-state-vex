@@ -2,6 +2,7 @@
 import YoungList from '@/components/dahsboard-components/YoungList.vue'
 import { onMounted } from 'vue'
 import { useYoungList } from '@/stores/youngList'
+import NextActivityView from '@/views/NextActivityView.vue'
 
 const youngStore = useYoungList()
 onMounted(() => {
@@ -26,7 +27,10 @@ onMounted(() => {
       <div class="container-dashboard-first-row__division">
         <YoungList />
       </div>
-      <div class="container-dashboard-first-row__division">TESDA</div>
+      <div class="container-dashboard-first-row__division">
+        <p>Next Activity</p>
+        <NextActivityView />
+      </div>
     </div>
     <div class="container-dashboard-second-row">
       <div class="container-dashboard-second-row__division">sdddds</div>

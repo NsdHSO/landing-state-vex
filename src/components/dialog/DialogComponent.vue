@@ -1,11 +1,12 @@
 <script setup lang="ts">
 defineProps({
-  openDialog: Boolean
+  openDialog: Boolean,
+  whereProject: String
 })
 </script>
 
 <template>
-  <teleport to="body">
+  <teleport :to="whereProject">
     <div v-if="openDialog" class="modal-container">
       <div class="modal-container-slot">
         <slot />
