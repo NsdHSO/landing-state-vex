@@ -20,7 +20,10 @@ const loginHandle = () => {
     console.log('Your username and password it is a must  ')
   } else {
     if (idParameter.value === 'register') {
-      if (regexPattern.test(credentials.email) && credentials.password.length >= 6) {
+      if (
+        regexPattern.test(credentials.email) &&
+        credentials.password.length >= 6
+      ) {
         authStore.registerWithEmail(credentials)
         credentials.email = ''
         credentials.password = ''
@@ -55,13 +58,31 @@ const getID = () => {
       <form @submit.prevent="loginHandle">
         <div class="container-login__form-division">
           <label>Username</label>
-          <input placeholder="joshi100@fardex.com" v-model="credentials.email" type="email" />
-          <p v-if="emailIsNotValid" class="container-login__form-division-error">Email is not valid</p>
+          <input
+            placeholder="joshi100@fardex.com"
+            v-model="credentials.email"
+            type="email"
+          />
+          <p
+            v-if="emailIsNotValid"
+            class="container-login__form-division-error"
+          >
+            Email is not valid
+          </p>
         </div>
         <div class="container-login__form-division">
           <label>Password</label>
-          <input placeholder="********" type="password" v-model="credentials.password" />
-          <p v-if="passwordIsNotValid" class="container-login__form-division-error">Password is to short</p>
+          <input
+            placeholder="********"
+            type="password"
+            v-model="credentials.password"
+          />
+          <p
+            v-if="passwordIsNotValid"
+            class="container-login__form-division-error"
+          >
+            Password is to short
+          </p>
         </div>
         <div class="container-login__form-submit">
           <router-link
