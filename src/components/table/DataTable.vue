@@ -32,9 +32,7 @@ defineProps<DataTable>()
         v-for="(showCell, keyCell) of showCells"
         :key="keyCell"
         @click="$emit('pressOnTheRow', rows)"
-      >
-        {{ rows[showCell] }}
-      </td>
+      ></td>
       <td v-if="actionRow?.show" class="row-content-action">
         <div v-for="item in actionRow.icons" @click="$emit(item.actionPress, rows)" :key="item.uid">
           <vex-icon
