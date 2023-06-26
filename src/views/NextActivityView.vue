@@ -1,5 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TimelinePointComponent from '@/components/dahsboard-components/TimelinePointComponent.vue'
+import { isReadonly, onMounted, ref } from 'vue'
 
-<template></template>
+const values = ref('')
+onMounted(() => {
+  console.log(isReadonly(values))
+})
+</script>
+
+<template>
+  <TimelinePointComponent />
+</template>
 
 <style scoped lang="scss"></style>

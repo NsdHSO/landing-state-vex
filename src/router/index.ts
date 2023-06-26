@@ -67,6 +67,7 @@ const router = createRouter({
         },
         {
           path: '',
+          name: 'RedirectToLogin',
           redirect: '/auth/login'
         }
       ]
@@ -81,7 +82,7 @@ const router = createRouter({
 router.beforeEach(async (to, from) => {
   const authStore = useAuthStore()
   if (!authStore.user.uid && to.name !== 'Login') {
-    return '/auth/login'
+    return { name: 'RedirectToLogin' }
   }
   if (authStore.user.uid && to.name == 'Login') {
     return { name: 'Dashboard' }
