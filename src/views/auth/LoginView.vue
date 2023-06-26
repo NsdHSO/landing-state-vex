@@ -15,136 +15,65 @@ const emailIsNotValid = ref(false)
 const passwordIsNotValid = ref(false)
 const authStore = useAuthStore()
 const loginHandle = () => {
-  const regexPattern =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (
-    !credentials.email ||
-    !credentials.password
-  ) {
-    console.log(
-      'Your username and password it is a must  '
-    )
+  const regexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!credentials.email || !credentials.password) {
+    console.log('Your username and password it is a must  ')
   } else {
-    if (
-      idParameter.value === 'register'
-    ) {
-      if (
-        regexPattern.test(
-          credentials.email
-        ) &&
-        credentials.password.length >= 6
-      ) {
-        authStore.registerWithEmail(
-          credentials
-        )
+    if (idParameter.value === 'register') {
+      if (regexPattern.test(credentials.email) && credentials.password.length >= 6) {
+        authStore.registerWithEmail(credentials)
         credentials.email = ''
         credentials.password = ''
         emailIsNotValid.value = false
         passwordIsNotValid.value = false
       }
     } else {
-      authStore.loginWithEmail(
-        credentials
-      )
+      authStore.loginWithEmail(credentials)
     }
 
-    if (
-      !regexPattern.test(
-        credentials.email
-      )
-    ) {
+    if (!regexPattern.test(credentials.email)) {
       emailIsNotValid.value = true
     }
-    if (
-      credentials.password.length < 6
-    ) {
+    if (credentials.password.length < 6) {
       passwordIsNotValid.value = true
     }
   }
 }
 
 const getID = () => {
-  return route.params.id === 'register'
-    ? 'login'
-    : 'register'
+  return route.params.id === 'register' ? 'login' : 'register'
 }
 </script>
 
 <template>
   <div class="container-login">
-    <div
-      class="container-login__header"
-    >
+    <div class="container-login__header">
       <p>Landing</p>
-      <p
-        v-if="
-          route.params.id === 'register'
-        "
-      >
-        Register
-      </p>
+      <p v-if="route.params.id === 'register'">Register</p>
     </div>
     <div class="container-login__form">
-      <form
-        @submit.prevent="loginHandle"
-      >
-        <div
-          class="container-login__form-division"
-        >
+      <form @submit.prevent="loginHandle">
+        <div class="container-login__form-division">
           <label>Username</label>
-          <input
-            placeholder="joshi100@fardex.com"
-            v-model="credentials.email"
-            type="email"
-          />
-          <p
-            v-if="emailIsNotValid"
-            class="container-login__form-division-error"
-          >
-            Email is not valid
-          </p>
+          <input placeholder="joshi100@fardex.com" v-model="credentials.email" type="email" />
+          <p v-if="emailIsNotValid" class="container-login__form-division-error">Email is not valid</p>
         </div>
-        <div
-          class="container-login__form-division"
-        >
+        <div class="container-login__form-division">
           <label>Password</label>
-          <input
-            placeholder="********"
-            type="password"
-            v-model="
-              credentials.password
-            "
-          />
-          <p
-            v-if="passwordIsNotValid"
-            class="container-login__form-division-error"
-          >
-            Password is to short
-          </p>
+          <input placeholder="********" type="password" v-model="credentials.password" />
+          <p v-if="passwordIsNotValid" class="container-login__form-division-error">Password is to short</p>
         </div>
-        <div
-          class="container-login__form-submit"
-        >
+        <div class="container-login__form-submit">
           <router-link
             :to="{
               name: 'Login',
               params: { id: getID() }
             }"
           >
-            {{
-              route.params.id !==
-              'register'
-                ? 'Register'
-                : 'Login'
-            }}
+            {{ route.params.id !== 'register' ? 'Register' : 'Login' }}
           </router-link>
           <button>
-            {{
-              route.params.id ===
-              'register'
-                ? 'Register'
-                : 'Login'
-            }}
+            {{ route.params.id === 'register' ? 'Register' : 'Login' }}
           </button>
         </div>
       </form>
@@ -190,16 +119,13 @@ const getID = () => {
 
         input {
           border: none;
-          border-bottom: 2px solid
-            var(--color-active-link);
+          border-bottom: 2px solid var(--color-active-link);
           background: none;
           padding-bottom: 0.2rem;
           padding-left: 0.5rem;
           transition: 0.2s all;
           font-size: 1rem;
-          caret-color: var(
-            --color-active-link
-          );
+          caret-color: var(--color-active-link);
           caret-shape: block;
 
           &:focus {
@@ -225,20 +151,15 @@ const getID = () => {
 
         button {
           height: 2rem;
-          background: var(
-            --color-sidebar-back
-          );
-          border: 1px solid
-            var(--color-active-link);
+          background: var(--color-sidebar-back);
+          border: 1px solid var(--color-active-link);
           border-radius: 0.8rem;
           color: var(--color-text);
           font-size: 0.9rem;
           font-weight: 500;
 
           &:hover {
-            background: var(
-              --color-primary-hover
-            );
+            background: var(--color-primary-hover);
             font-weight: 700;
             color: #fdfffe;
           }
@@ -259,9 +180,7 @@ const getID = () => {
   }
   50% {
     transform: scale(1.01);
-    color: var(
-      --color-text-transition-intermediate
-    );
+    color: var(--color-text-transition-intermediate);
   }
   70% {
     color: #e2d1d1;
