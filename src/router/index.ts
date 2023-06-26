@@ -90,13 +90,3 @@ router.beforeEach(async (to, from) => {
 })
 
 export default router
-
-// children : [{
-//     path : '/',
-//     name : 'Dashboard',
-//     component :
-// }, {
-//     path : '/user',
-//     name : 'Users',
-//     component : () => import('../views/UsersView.vue')
-// }]
