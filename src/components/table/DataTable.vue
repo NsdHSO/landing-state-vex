@@ -12,6 +12,7 @@ export interface DataTable<T> {
       className?: string
     }[]
   }
+  pressOnTheCell: string
 }
 
 defineProps<DataTable<any>>()
@@ -27,18 +28,21 @@ defineProps<DataTable<any>>()
         {{ actionRow.title }}
       </th>
     </tr>
-    <tr v-for="(rows, keyRow) of dataSource" :key="keyRow" class="row-content">
+    <tr v-for="(row, keyRow) of dataSource" :key="keyRow" class="row-content">
       <td
         v-for="(showCell, keyCell) of showCells"
         :key="keyCell"
-        @click="$emit('pressOnTheRow', rows)"
+        @dblclick="$emit(actionRow?.icons[keyCell].actionPress, row)"
+        @click="$emit(pressOnTheCell, $event)"
       >
-        {{ rows[showCell].dataCell }}
+        <div v-if="row.editable">
+          {{ row[showCell].dataCell }}
+        </div>
       </td>
       <td v-if="actionRow?.show" class="row-content-action">
         <div
           v-for="item in actionRow.icons"
-          @click="$emit(item.actionPress, rows)"
+          @click="$emit(item.actionPress, row)"
           :key="item.uid"
         >
           <vex-icon

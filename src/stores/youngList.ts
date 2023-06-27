@@ -114,6 +114,11 @@ export const useYoungList = defineStore(
             this.young = this.young.filter((value) => value.uid !== idx)
           })
           .catch((err) => console.log(err))
+      },
+
+      setARowLikeEdit() {
+        this.reMapYoung[0].group.editable = true
+        this.reMapYoung[0].editable = true
       }
     },
 

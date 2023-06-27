@@ -65,6 +65,8 @@ const setUid = (event: Young) => {
           }
         ]
       }"
+      :press-on-the-cell="'cellEvent'"
+      @cell-event="youngStore.setARowLikeEdit()"
       @press-on-the-row="changeCount($event, 'LayoutComponent')"
       @press-on-the-action="setUid($event)"
     />
