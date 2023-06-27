@@ -29,7 +29,7 @@ const changeCount = (event: Young, component: string) => {
   router.push({
     name: 'editYoungList',
     params: {
-      id: event.group
+      id: event.group.dataCell
     },
     query: { component }
   })
@@ -43,7 +43,7 @@ const removeAction = (event) => {
   open.value = false
 }
 const setUid = (event: Young) => {
-  UID_ENTRY.value = event.uid
+  UID_ENTRY.value = event.uid.dataCell
   open.value = true
 }
 </script>
@@ -52,7 +52,7 @@ const setUid = (event: Young) => {
   <div class="young-list-container">
     <DataTable
       v-if="youngStore.young.length"
-      :data-source="youngStore.young"
+      :data-source="youngStore.reMapYoung"
       :show-cells="['group', 'count', 'leader']"
       :action-row="{
         show: true,
@@ -71,7 +71,10 @@ const setUid = (event: Young) => {
     <div v-else>Loading</div>
   </div>
   <DialogComponent :open-dialog="open" where-project="body">
-    <GenericDialogComponent title="Are you sure" @generic-msg="removeAction($event)" />
+    <GenericDialogComponent
+      title="Are you sure"
+      @generic-msg="removeAction($event)"
+    />
   </DialogComponent>
 </template>
 

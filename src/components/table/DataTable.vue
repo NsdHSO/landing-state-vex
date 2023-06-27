@@ -1,6 +1,6 @@
 <script setup lang="ts">
-interface DataTable {
-  dataSource: any
+export interface DataTable<T> {
+  dataSource: T
   showCells: string[]
   zebra?: boolean
   actionRow?: {
@@ -14,7 +14,7 @@ interface DataTable {
   }
 }
 
-defineProps<DataTable>()
+defineProps<DataTable<any>>()
 </script>
 
 <template>
@@ -32,9 +32,15 @@ defineProps<DataTable>()
         v-for="(showCell, keyCell) of showCells"
         :key="keyCell"
         @click="$emit('pressOnTheRow', rows)"
-      ></td>
+      >
+        {{ rows[showCell].dataCell }}
+      </td>
       <td v-if="actionRow?.show" class="row-content-action">
-        <div v-for="item in actionRow.icons" @click="$emit(item.actionPress, rows)" :key="item.uid">
+        <div
+          v-for="item in actionRow.icons"
+          @click="$emit(item.actionPress, rows)"
+          :key="item.uid"
+        >
           <vex-icon
             :icon="item.iconName"
             class="fa-2xl row-content-action__icon"

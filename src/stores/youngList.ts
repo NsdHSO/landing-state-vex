@@ -1,12 +1,26 @@
 import { defineStore } from 'pinia'
 import { db } from '../../firebase/firebase'
-import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore'
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc
+} from 'firebase/firestore'
+import type { DataTable } from '@/components/table/DataTable.vue'
 
 export interface Young {
-  group: string
-  count: number
-  leader: string
-  uid: string
+  group: Cell<string>
+  count: Cell<number>
+  leader: Cell<string>
+  uid: Cell<string>
+  editable: boolean
+}
+
+export interface Cell<T> {
+  dataCell: T
+  editable: boolean
 }
 
 const youngCollection = collection(db, 'youngList')
@@ -15,11 +29,35 @@ export const useYoungList = defineStore(
 
   {
     state: () => ({
-      young: [] as Young[]
+      young: [] as DataTable<Young>[]
     }),
     getters: {
       groups: (state) => {
         return state.young.map((value) => value.group) // Modify this logic as needed
+      }, // ReMap Array like interface
+      reMapYoung: (state) => {
+        return state.young.map(
+          (value) =>
+            ({
+              group: {
+                dataCell: value.group,
+                editable: false
+              },
+              count: {
+                dataCell: value.count,
+                editable: false
+              },
+              leader: {
+                dataCell: value.leader,
+                editable: false
+              },
+              uid: {
+                dataCell: value.uid,
+                editable: false
+              },
+              editable: true
+            } as Young)
+        ) // Modify this logic as needed
       }
     },
     actions: {
@@ -36,12 +74,17 @@ export const useYoungList = defineStore(
         return this.young.find((young: Young) => +young.group === idxGroup)
       },
       async changeOneEntry(idxGroup: number, payload: Young) {
-        const index = this.young.findIndex((young) => young.group === payload.group)
+        const index = this.young.findIndex(
+          (young) => young.group === payload.group
+        )
         if (index !== -1) {
-          await updateDoc(doc(db, 'youngList', this.young[index].uid), {
-            ...this.young[index],
-            ...payload
-          })
+          await updateDoc(
+            doc(db, 'youngList', this.young[index].uid.dataCell),
+            {
+              ...this.young[index],
+              ...payload
+            }
+          )
             .then((v) => {
               this.young[index] = {
                 ...this.young[index],
