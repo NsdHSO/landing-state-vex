@@ -33,10 +33,14 @@ defineProps<DataTable<any>>()
         v-for="(showCell, keyCell) of showCells"
         :key="keyCell"
         @dblclick="$emit(actionRow?.icons[keyCell].actionPress, row)"
-        @click="$emit(pressOnTheCell, $event)"
+        @click="$emit(pressOnTheCell, { idx: keyRow, cell: showCell })"
       >
-        <div v-if="row.editable">
+        <div v-if="!row[showCell].editable">
           {{ row[showCell].dataCell }}
+        </div>
+        <!--        Branch when Row is editable-->
+        <div v-if="row.editable && row[showCell].editable">
+          <input v-model="row[showCell].dataCell" />
         </div>
       </td>
       <td v-if="actionRow?.show" class="row-content-action">

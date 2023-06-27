@@ -29,35 +29,32 @@ export const useYoungList = defineStore(
 
   {
     state: () => ({
-      young: [] as DataTable<Young>[]
+      young: [] as Young[]
     }),
     getters: {
       groups: (state) => {
-        return state.young.map((value) => value.group) // Modify this logic as needed
+        return state.young.map((value) => value.group.dataCell) // Modify this logic as needed
       }, // ReMap Array like interface
-      reMapYoung: (state) => {
-        return state.young.map(
-          (value) =>
-            ({
-              group: {
-                dataCell: value.group,
-                editable: false
-              },
-              count: {
-                dataCell: value.count,
-                editable: false
-              },
-              leader: {
-                dataCell: value.leader,
-                editable: false
-              },
-              uid: {
-                dataCell: value.uid,
-                editable: false
-              },
-              editable: true
-            } as Young)
-        ) // Modify this logic as needed
+      reMappedYoung: (state) => {
+        state.young = state.young.map((value) => ({
+          group: {
+            dataCell: value.group,
+            editable: false
+          },
+          count: {
+            dataCell: value.count,
+            editable: false
+          },
+          leader: {
+            dataCell: value.leader,
+            editable: false
+          },
+          uid: {
+            dataCell: value.uid,
+            editable: false
+          },
+          editable: false
+        }))
       }
     },
     actions: {
@@ -116,9 +113,9 @@ export const useYoungList = defineStore(
           .catch((err) => console.log(err))
       },
 
-      setARowLikeEdit() {
-        this.reMapYoung[0].group.editable = true
-        this.reMapYoung[0].editable = true
+      setARowLikeEdit(index: number, cell: string) {
+        this.young[index].editable = true
+        this.young[index][cell].editable = true
       }
     },
 

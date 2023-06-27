@@ -2,7 +2,7 @@
 import DataTable from '@/components/table/DataTable.vue'
 import { useYoungList, Young } from '@/stores/youngList'
 import { useRouter } from 'vue-router'
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import DialogComponent from '@/components/dialog/DialogComponent.vue'
 import GenericDialogComponent from '@/components/dialog/GenericDialogComponent.vue'
 
@@ -46,13 +46,16 @@ const setUid = (event: Young) => {
   UID_ENTRY.value = event.uid.dataCell
   open.value = true
 }
+
+const editCell = ($event) => {
+  youngStore.setARowLikeEdit($event.idx, $event.cell)
+}
 </script>
 
 <template>
-  <div class="young-list-container">
+  <div class="young-list-container" v-if="youngStore.young.length">
     <DataTable
-      v-if="youngStore.young.length"
-      :data-source="youngStore.reMapYoung"
+      :data-source="youngStore.young"
       :show-cells="['group', 'count', 'leader']"
       :action-row="{
         show: true,
@@ -66,12 +69,13 @@ const setUid = (event: Young) => {
         ]
       }"
       :press-on-the-cell="'cellEvent'"
-      @cell-event="youngStore.setARowLikeEdit()"
+      @cell-event="editCell($event)"
       @press-on-the-row="changeCount($event, 'LayoutComponent')"
       @press-on-the-action="setUid($event)"
     />
-    <div v-else>Loading</div>
   </div>
+  <div v-else>Loading</div>
+
   <DialogComponent :open-dialog="open" where-project="body">
     <GenericDialogComponent
       title="Are you sure"
