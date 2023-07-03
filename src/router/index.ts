@@ -22,6 +22,11 @@ const router = createRouter({
             icon: 'user',
             path: '/landing-state-vex/user',
             name: 'Users'
+          },
+          {
+            icon: 'gas-pump',
+            path: '/petrol',
+            name: 'Pump'
           }
         ]
       },
@@ -40,6 +45,12 @@ const router = createRouter({
           ]
         },
         {
+          path: '/petrol',
+          name: 'Pump',
+          component: () => import('./../components/pump/pumpComponent.vue')
+        },
+
+        {
           path: 'user',
           component: UsersView
         },
@@ -54,7 +65,6 @@ const router = createRouter({
         }
       ]
     },
-
     {
       path: '/auth',
       name: 'LandingAuth',
