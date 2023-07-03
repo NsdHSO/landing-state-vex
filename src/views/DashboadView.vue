@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import YoungList from '@/components/dahsboard-components/YoungList.vue'
-import { onMounted } from 'vue'
+import { onMounted, reactive, shallowReactive } from 'vue'
 import { useYoungList } from '@/stores/youngList'
 import NextActivityView from '@/views/NextActivityView.vue'
 
@@ -8,6 +8,11 @@ const youngStore = useYoungList()
 onMounted(() => {
   youngStore.getYoung()
 })
+
+let rev = shallowReactive({ name: 2 })
+const clicka = () => {
+  rev.name = 43
+}
 </script>
 
 <template>
@@ -30,6 +35,8 @@ onMounted(() => {
       <div class="container-dashboard-first-row__division">
         <p>Next Activity</p>
         <NextActivityView />
+
+        <button @click="clicka">TEST BUTTON</button>
       </div>
     </div>
     <div class="container-dashboard-second-row">

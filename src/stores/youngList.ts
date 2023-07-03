@@ -36,7 +36,7 @@ export const useYoungList = defineStore(
         return state.young.map((value) => value.group.dataCell) // Modify this logic as needed
       }, // ReMap Array like interface
       reMappedYoung: (state) => {
-        state.young = state.young.map((value) => ({
+        state.young = state.young.map((value, idx) => ({
           group: {
             dataCell: value.group,
             editable: false
@@ -47,7 +47,7 @@ export const useYoungList = defineStore(
           },
           leader: {
             dataCell: value.leader,
-            editable: false
+            editable: true
           },
           uid: {
             dataCell: value.uid,
@@ -114,8 +114,7 @@ export const useYoungList = defineStore(
       },
 
       setARowLikeEdit(index: number, cell: string) {
-        this.young[index].editable = true
-        this.young[index][cell].editable = true
+        this.young[index].editable = !this.young[index].editable
       }
     },
 

@@ -35,7 +35,7 @@ defineProps<DataTable<any>>()
         @dblclick="$emit(actionRow?.icons[keyCell].actionPress, row)"
         @click="$emit(pressOnTheCell, { idx: keyRow, cell: showCell })"
       >
-        <div v-if="!row[showCell].editable">
+        <div v-if="!row.editable || !row[showCell].editable">
           {{ row[showCell].dataCell }}
         </div>
         <!--        Branch when Row is editable-->
