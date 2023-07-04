@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import YoungList from '@/components/dahsboard-components/YoungList.vue'
-import { onMounted, reactive, shallowReactive } from 'vue'
+import { onMounted, shallowReactive } from 'vue'
 import { useYoungList } from '@/stores/youngList'
 import NextActivityView from '@/views/NextActivityView.vue'
 

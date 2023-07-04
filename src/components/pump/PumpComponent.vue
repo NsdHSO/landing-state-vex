@@ -1,13 +1,43 @@
 <script setup lang="ts">
 import ShowValueComponent from './ShowValueComponent.vue'
+import { ref } from 'vue'
+import SherifIcon from '@/assets/icons/SherifIcon.vue'
+import PumpIcon from '@/assets/icons/PumpIcon.vue'
+
+const dollarRef = ref('')
+const litters = ref('')
+const preset = ref('')
+const fuel1 = ref('')
+const fuel2 = ref('')
+const fuel4 = ref('')
 </script>
 
 <template>
   <div class="pump">
     <div class="pump__top">
-      <div>Icon</div>
-      <div>
-        <ShowValueComponent />
+      <div class="pump__top-preset">
+        <SherifIcon />
+        <ShowValueComponent :model="preset" label="Preset" />
+      </div>
+    </div>
+    <div class="pump__bottom">
+      <div class="pump__bottom-coins">
+        <ShowValueComponent :model="dollarRef" label="Dollar" />
+        <ShowValueComponent :model="litters" label="Liters" />
+      </div>
+      <div class="pump__bottom__fuel">
+        <div class="pump__bottom__fuel-price">
+          <ShowValueComponent :model="fuel1" label="Fuel1" />
+          <ShowValueComponent :model="fuel2" label="Fuel2" />
+          <ShowValueComponent :model="fuel4" label="Fuel3" />
+        </div>
+        <div class="pump__bottom__fuel-pump">
+          <div>
+            <PumpIcon />
+          </div>
+          <div>green</div>
+          <div>blue</div>
+        </div>
       </div>
     </div>
   </div>
@@ -16,13 +46,66 @@ import ShowValueComponent from './ShowValueComponent.vue'
 <style lang="scss" scoped>
 .pump {
   padding: 1rem;
+  display: flex;
 
   &__top {
     div {
-      width: 50%;
+      width: max-content;
+      padding: 1rem;
+    }
+
+    &-preset {
+      svg {
+        fill: var(--color-hover);
+      }
     }
 
     display: flex;
+  }
+
+  font-family: digital;
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    &-coins {
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+      align-items: center;
+
+      > div {
+        ::v-deep {
+          input {
+            width: 20rem;
+          }
+        }
+
+        display: flex;
+        gap: 1rem;
+      }
+    }
+
+    &__fuel {
+      display: flex;
+      gap: 2rem;
+      flex-direction: column;
+
+      &-price,
+      &-pump {
+        display: flex;
+      }
+
+      &-price {
+        gap: 1rem;
+      }
+
+      &-pump {
+        justify-content: space-between;
+      }
+    }
   }
 }
 </style>
