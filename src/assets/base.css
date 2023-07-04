@@ -26,8 +26,9 @@
   --vt-light-danger: #ff6666;
   --vt-light-link-deactivate-purple: #baa2b0;
   --vt-table-light-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
-  --vt-shadow-sidenva-light: -1px 20px 8px 6px rgb(137 142 176), 1px 2px 4px 0px rgb(165 170 218),
-    -20px 18px 20px 7px rgb(131 168 220), -20px 17px 16px 0px rgb(153 180 217);
+  --vt-shadow-sidenva-light: -1px 20px 8px 6px rgb(137 142 176),
+    1px 2px 4px 0px rgb(165 170 218), -20px 18px 20px 7px rgb(131 168 220),
+    -20px 17px 16px 0px rgb(153 180 217);
 
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
   --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
@@ -39,14 +40,16 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-  --vt-shadow-sidenva-dark: -1px 20px 8px 6px rgb(0 0 0 / 70%), 1px 2px 4px 0px rgb(0 0 0 / 70%),
-    -20px 18px 20px 7px rgb(0 0 0 / 70%), 2px 4px 16px 0px rgb(139 156 156 / 70%);
+  --vt-shadow-sidenva-dark: -1px 20px 8px 6px rgb(0 0 0 / 70%),
+    1px 2px 4px 0px rgb(0 0 0 / 70%), -20px 18px 20px 7px rgb(0 0 0 / 70%),
+    2px 4px 16px 0px rgb(139 156 156 / 70%);
   --vt-primary-hover-dark: #dff5be8f;
   --vt-hover-dark: rgb(118 134 97);
   --vt-table-dark-zebra-header: #dff5be8f;
   --vt-table-dark-zebra-data-cell: #2b2b2ba3;
-  --vt-table-dark-box-shadow: 0px 1px 8px 6px rgb(0 0 0 / 70%), 1px 2px 4px 0px rgb(0 0 0 / 70%),
-    -1px -1px 20px 7px rgb(0 0 0 / 70%), 2px 4px 16px 0px rgb(139 156 156 / 70%);
+  --vt-table-dark-box-shadow: 0px 1px 8px 6px rgb(0 0 0 / 70%),
+    1px 2px 4px 0px rgb(0 0 0 / 70%), -1px -1px 20px 7px rgb(0 0 0 / 70%),
+    2px 4px 16px 0px rgb(139 156 156 / 70%);
   --vt-table-dark-zebra-data-cell-hover: var(--vt-c-white);
   --vt-light-dark: #ff6666;
 }
@@ -119,8 +122,9 @@ body {
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

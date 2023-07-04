@@ -16,7 +16,11 @@ defineProps({
       </router-link>
     </div>
     <div class="container-side-bar-container">
-      <div v-for="(route, key) in routes" :key="key" class="container-side-bar-container__paths">
+      <div
+        v-for="(route, key) in routes"
+        :key="key"
+        class="container-side-bar-container__paths"
+      >
         <router-link :to="route.path">
           <div class="container-side-bar-container__paths-icon">
             <vex-icon :icon="['fas', route.icon]" />
@@ -101,6 +105,7 @@ defineProps({
         &exact,
         &exact-active {
         }
+
         border-radius: 1rem;
         border: 2px solid var(--color-border);
         background: var(--color-bg-active-link);
