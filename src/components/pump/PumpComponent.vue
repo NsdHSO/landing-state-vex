@@ -124,10 +124,12 @@ const pumpMetaData = [
           width: 7rem;
           height: 7rem;
           transition: all 0.4s;
+
           &:active {
             transform: rotate(55deg);
-            g {
-              :nth-child(1) {
+
+            :deep(g) {
+              :nth-child(2) {
                 fill: red;
               }
             }
