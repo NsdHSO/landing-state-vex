@@ -10,6 +10,21 @@ const preset = ref('')
 const fuel1 = ref('')
 const fuel2 = ref('')
 const fuel4 = ref('')
+
+const pumpMetaData = [
+  {
+    class: 'green-one',
+    name: 'Green'
+  },
+  {
+    class: 'blue-two',
+    name: 'Blue'
+  },
+  {
+    class: 'red-three',
+    name: 'Red'
+  }
+]
 </script>
 
 <template>
@@ -32,11 +47,11 @@ const fuel4 = ref('')
           <ShowValueComponent :model="fuel4" label="Fuel3" />
         </div>
         <div class="pump__bottom__fuel-pump">
-          <div>
-            <PumpIcon />
+          <div v-for="(item, idx) in pumpMetaData" :key="idx">
+            <div :class="item.class">
+              <PumpIcon />
+            </div>
           </div>
-          <div>green</div>
-          <div>blue</div>
         </div>
       </div>
     </div>
@@ -77,7 +92,7 @@ const fuel4 = ref('')
       align-items: center;
 
       > div {
-        ::v-deep {
+        :deep {
           input {
             width: 20rem;
           }
@@ -104,6 +119,32 @@ const fuel4 = ref('')
 
       &-pump {
         justify-content: space-between;
+
+        svg {
+          width: 7rem;
+          height: 7rem;
+          transition: all 0.4s;
+          &:active {
+            transform: rotate(55deg);
+            g {
+              :nth-child(1) {
+                fill: red;
+              }
+            }
+          }
+        }
+
+        .green-one {
+          fill: var(--color-pump-one);
+        }
+
+        .blue-two {
+          fill: var(--color-pump-two);
+        }
+
+        .red-three {
+          fill: var(--color-pump-three);
+        }
       }
     }
   }

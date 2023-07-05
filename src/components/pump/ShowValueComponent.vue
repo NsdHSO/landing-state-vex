@@ -20,6 +20,7 @@ input {
   background: var(--color-sidebar-back);
   font-family: digital;
   font-size: 3rem;
+  border: none;
   border-radius: 1rem;
   color: var(--color-active-link);
   padding: 0 0.6rem;
