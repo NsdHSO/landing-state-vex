@@ -3,6 +3,7 @@ import ShowValueComponent from './ShowValueComponent.vue'
 import { ref } from 'vue'
 import SherifIcon from '@/assets/icons/SherifIcon.vue'
 import PumpIcon from '@/assets/icons/PumpIcon.vue'
+import KeyCalc from '@/components/pump/KeyCalc.vue'
 
 const dollarRef = ref('')
 const litters = ref('')
@@ -31,8 +32,13 @@ const pumpMetaData = [
   <div class="pump">
     <div class="pump__top">
       <div class="pump__top-preset">
-        <SherifIcon />
-        <ShowValueComponent :model="preset" label="Preset" />
+        <div>
+          <SherifIcon />
+          <ShowValueComponent :model="preset" label="Preset" />
+        </div>
+        <div>
+          <KeyCalc />
+        </div>
       </div>
     </div>
     <div class="pump__bottom">
@@ -66,7 +72,6 @@ const pumpMetaData = [
   &__top {
     div {
       width: max-content;
-      padding: 1rem;
     }
 
     &-preset {
