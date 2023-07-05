@@ -1,12 +1,13 @@
 <script setup lang="ts">
 defineProps({
   label: String,
-  model: String
+  model: String || Number,
+  disabledModel: Boolean
 })
 </script>
 <template>
   <div>
-    <input type="number" v-bind="model" />
+    <input type="number" :disabled="disabledModel" :value="model" />
     <div class="show-value__label">
       <label for="">{{ label }}</label>
     </div>
@@ -22,7 +23,7 @@ input {
   font-size: 3rem;
   border: none;
   border-radius: 1rem;
-  color: var(--color-active-link);
+  color: var(--color-pump-three);
   padding: 0 0.6rem;
   &:focus,
   &:active,

@@ -1,8 +1,4 @@
-<script setup lang="ts">
-function clickOnKey(item) {
-  console.log(item)
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>
@@ -26,7 +22,7 @@ function clickOnKey(item) {
           })
           .filter((value) => value !== undefined && value !== null)"
         :key="key"
-        @click="clickOnKey(item)"
+        @click="$emit('keyPress', { item: item })"
       >
         {{ item }}
       </div>
@@ -40,10 +36,12 @@ function clickOnKey(item) {
   width: 11rem;
   gap: 0.7rem;
   flex-wrap: wrap;
+
   :last-child {
     width: max-content;
     max-width: max-content;
   }
+
   &__key {
     width: 2rem;
     max-width: 2rem;

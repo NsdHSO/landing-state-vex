@@ -10,22 +10,48 @@ const litters = ref('')
 const preset = ref('')
 const fuel1 = ref('')
 const fuel2 = ref('')
-const fuel4 = ref('')
-
+const fuel3 = ref('')
+const disabledPressed = ref(true)
 const pumpMetaData = [
   {
     class: 'green-one',
-    name: 'Green'
+    name: 'Green',
+    fuel: 1,
+    price: 3.2
   },
   {
     class: 'blue-two',
-    name: 'Blue'
+    name: 'Blue',
+    fuel: 2,
+    price: 2.2
   },
   {
     class: 'red-three',
-    name: 'Red'
+    name: 'Red',
+    fuel: 3,
+    price: 1.2
   }
-]
+] as { class: string; name: string; fuel: number; price: number }[]
+
+function keyPressed($event) {
+  if ($event.item !== 'Clear') {
+    preset.value = preset.value + $event.item + ''
+  } else {
+    preset.value = ''
+  }
+}
+
+function putInCar(fuel) {
+  if (fuel.fuel === 1) {
+    fuel1.value = fuel.price
+  }
+  if (fuel.fuel === 2) {
+    fuel2.value = fuel.price
+  }
+  if (fuel.fuel === 3) {
+    fuel3.value = fuel.price
+  }
+}
 </script>
 
 <template>
@@ -34,10 +60,14 @@ const pumpMetaData = [
       <div class="pump__top-preset">
         <div>
           <SherifIcon />
-          <ShowValueComponent :model="preset" label="Preset" />
+          <ShowValueComponent
+            :model="preset"
+            label="Preset"
+            :disabled-model="disabledPressed"
+          />
         </div>
         <div>
-          <KeyCalc />
+          <KeyCalc @key-press="keyPressed($event)" />
         </div>
       </div>
     </div>
@@ -48,12 +78,16 @@ const pumpMetaData = [
       </div>
       <div class="pump__bottom__fuel">
         <div class="pump__bottom__fuel-price">
-          <ShowValueComponent :model="fuel1" label="Fuel1" />
-          <ShowValueComponent :model="fuel2" label="Fuel2" />
-          <ShowValueComponent :model="fuel4" label="Fuel3" />
+          <ShowValueComponent :model="fuel1" label="Fuel 1" />
+          <ShowValueComponent :model="fuel2" label="Fuel 2" />
+          <ShowValueComponent :model="fuel3" label="Fuel 3" />
         </div>
         <div class="pump__bottom__fuel-pump">
-          <div v-for="(item, idx) in pumpMetaData" :key="idx">
+          <div
+            v-for="(item, idx) in pumpMetaData"
+            :key="idx"
+            @mousedown="putInCar(item)"
+          >
             <div :class="item.class">
               <PumpIcon />
             </div>
