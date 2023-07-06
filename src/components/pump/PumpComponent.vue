@@ -4,11 +4,14 @@ import { reactive, ref, watch } from 'vue'
 import SherifIcon from '@/assets/icons/SherifIcon.vue'
 import PumpIcon from '@/assets/icons/PumpIcon.vue'
 import KeyCalc from '@/components/pump/KeyCalc.vue'
+import DialogComponent from '@/components/dialog/DialogComponent.vue'
+import GenericDialogComponent from '@/components/dialog/GenericDialogComponent.vue'
 
 const dollarRef = ref(0)
 const littersRef = ref(0)
 const presetRef = ref(0)
 const increaseIntervalRef = ref(0)
+const openRef = ref(false)
 const fuelsRef = reactive([
   {
     valueModel: 0,
@@ -72,7 +75,10 @@ function addContAtEveryDelayStep(
     }, i * delay)
   }
 }
-
+function removeAction(event) {
+  open.value = false
+  console.log(event)
+}
 function putInCar(fuel) {
   const increment = fuel.price / 100
   const duration = 300 // Duration in milliseconds
@@ -100,6 +106,7 @@ function increaseLitter(delay) {
 
 function clearIntervalIncrease() {
   clearInterval(increaseIntervalRef.value)
+  openRef.value = true
 }
 </script>
 
@@ -149,6 +156,12 @@ function clearIntervalIncrease() {
       </div>
     </div>
   </div>
+  <DialogComponent :open-dialog="openRef" where-project="body">
+    <GenericDialogComponent
+      title="You have to pay"
+      @generic-msg="removeAction($event)"
+    />
+  </DialogComponent>
 </template>
 
 <style lang="scss" scoped>
