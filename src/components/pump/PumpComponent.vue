@@ -5,11 +5,11 @@ import SherifIcon from '@/assets/icons/SherifIcon.vue'
 import PumpIcon from '@/assets/icons/PumpIcon.vue'
 import KeyCalc from '@/components/pump/KeyCalc.vue'
 
-const dollarRef = ref('')
-const litters = ref(0)
-const preset = ref('')
-const increaseInterval = ref(0)
-const fuels = reactive([
+const dollarRef = ref(0)
+const littersRef = ref(0)
+const presetRef = ref(0)
+const increaseIntervalRef = ref(0)
+const fuelsRef = reactive([
   {
     valueModel: 0,
     label: 'Fuel 1',
@@ -50,9 +50,11 @@ const pumpMetaData = [
 
 function keyPressed($event) {
   if ($event.item !== 'Clear') {
-    preset.value = preset.value + $event.item + ''
+    presetRef.value = presetRef.value + $event.item + 0
+    dollarRef.value = ''
+    littersRef.value = 0
   } else {
-    preset.value = ''
+    presetRef.value = 0
   }
 }
 
@@ -66,7 +68,7 @@ function addContAtEveryDelayStep(
   for (let i = 0; i <= steps; i++) {
     setTimeout(() => {
       currentFuel += increment
-      fuels[fuel.fuel].valueModel = +currentFuel.toFixed(3)
+      fuelsRef[fuel.fuel].valueModel = +currentFuel.toFixed(3)
     }, i * delay)
   }
 }
@@ -77,27 +79,27 @@ function putInCar(fuel) {
   const steps = 100 // Number of steps for the progress bar
   const delay = duration / steps
   let currentFuel = 0
-  dollarRef.value = ''
-  litters.value = 0
+  dollarRef.value = 0
+  littersRef.value = 0
 
-  fuels.forEach((fuel) =>
+  fuelsRef.forEach((fuel) =>
     fuel.valueModel > 0 ? (fuel.valueModel = 0) : fuel.valueModel
   )
   addContAtEveryDelayStep(steps, currentFuel, increment, fuel, delay)
   increaseLitter(delay)
   watch(dollarRef, (newValueDollar) => {
-    litters.value = +(newValueDollar / fuel.price).toFixed(3)
+    littersRef.value = +(newValueDollar / fuel.price).toFixed(3)
   })
 }
 
 function increaseLitter(delay) {
-  increaseInterval.value = setInterval(() => {
+  increaseIntervalRef.value = setInterval(() => {
     dollarRef.value++
   }, delay)
 }
 
 function clearIntervalIncrease() {
-  clearInterval(increaseInterval.value)
+  clearInterval(increaseIntervalRef.value)
 }
 </script>
 
@@ -108,7 +110,7 @@ function clearIntervalIncrease() {
         <div>
           <SherifIcon />
           <ShowValueComponent
-            :model="preset"
+            :model="presetRef"
             label="Preset"
             :disabled-model="disabledPressed"
           />
@@ -121,12 +123,12 @@ function clearIntervalIncrease() {
     <div class="pump__bottom">
       <div class="pump__bottom-coins">
         <ShowValueComponent :model="dollarRef" label="Dollar" />
-        <ShowValueComponent :model="litters" label="Liters" />
+        <ShowValueComponent :model="littersRef" label="Liters" />
       </div>
       <div class="pump__bottom__fuel">
         <div class="pump__bottom__fuel-price">
           <ShowValueComponent
-            v-for="(item, idx) in fuels"
+            v-for="(item, idx) in fuelsRef"
             :model="item.valueModel"
             :label="item.label"
             :key="idx"
