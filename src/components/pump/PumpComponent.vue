@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import ShowValueComponent from './ShowValueComponent.vue'
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import SherifIcon from '@/assets/icons/SherifIcon.vue'
 import PumpIcon from '@/assets/icons/PumpIcon.vue'
 import KeyCalc from '@/components/pump/KeyCalc.vue'
 
 const dollarRef = ref('')
-const litters = ref('')
+const litters = ref(0)
 const preset = ref('')
+const increaseInterval = ref(0)
 const fuels = reactive([
   {
     valueModel: 0,
@@ -55,20 +56,48 @@ function keyPressed($event) {
   }
 }
 
-function putInCar(fuel) {
-  const increment = fuel.price / 100
-  const duration = 300 // Duration in milliseconds
-  const steps = 100 // Number of steps for the progress bar
-  const delay = duration / steps
-
-  let currentFuel = 0
-
+function addContAtEveryDelayStep(
+  steps: number,
+  currentFuel: number,
+  increment: number,
+  fuel,
+  delay: number
+) {
   for (let i = 0; i <= steps; i++) {
     setTimeout(() => {
       currentFuel += increment
       fuels[fuel.fuel].valueModel = +currentFuel.toFixed(3)
     }, i * delay)
   }
+}
+
+function putInCar(fuel) {
+  const increment = fuel.price / 100
+  const duration = 300 // Duration in milliseconds
+  const steps = 100 // Number of steps for the progress bar
+  const delay = duration / steps
+  let currentFuel = 0
+  dollarRef.value = ''
+  litters.value = 0
+
+  fuels.forEach((fuel) =>
+    fuel.valueModel > 0 ? (fuel.valueModel = 0) : fuel.valueModel
+  )
+  addContAtEveryDelayStep(steps, currentFuel, increment, fuel, delay)
+  increaseLitter(delay)
+  watch(dollarRef, (newValueDollar) => {
+    litters.value = +(newValueDollar / fuel.price).toFixed(3)
+  })
+}
+
+function increaseLitter(delay) {
+  increaseInterval.value = setInterval(() => {
+    dollarRef.value++
+  }, delay)
+}
+
+function clearIntervalIncrease() {
+  clearInterval(increaseInterval.value)
 }
 </script>
 
@@ -108,6 +137,7 @@ function putInCar(fuel) {
             v-for="(item, idx) in pumpMetaData"
             :key="idx"
             @mousedown="putInCar(item)"
+            @mouseup="clearIntervalIncrease()"
           >
             <div :class="item.class">
               <PumpIcon />
