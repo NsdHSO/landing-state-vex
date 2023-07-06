@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import ShowValueComponent from './ShowValueComponent.vue'
 import { computed, reactive, ref, watch } from 'vue'
 import SherifIcon from '@/assets/icons/SherifIcon.vue'
 import PumpIcon from '@/assets/icons/PumpIcon.vue'
 import KeyCalc from '@/components/pump/KeyCalc.vue'
 import DialogComponent from '@/components/dialog/DialogComponent.vue'
 import GenericDialogComponent from '@/components/dialog/GenericDialogComponent.vue'
+import ShowValueComponent from '@/components/pump/ShowValueComponent.vue'
 
 const dollarRef = ref(0)
 const littersRef = ref(0)

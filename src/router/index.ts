@@ -47,7 +47,7 @@ const router = createRouter({
         {
           path: '/petrol',
           name: 'Pump',
-          component: () => import('./../components/pump/pumpComponent.vue')
+          component: () => import('./../views/PumpView.vue')
         },
 
         {
