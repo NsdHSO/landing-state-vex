@@ -26,7 +26,13 @@ defineProps({
     </div>
     <slot />
   </div>
-  <div v-if="closeButton" @click="$emit('genericMsg', 'closeModal')">X</div>
+  <div
+    class="generic-container__close"
+    v-if="closeButton"
+    @click="$emit('genericMsg', 'closeModal')"
+  >
+    <vex-icon :icon="['fas', 'xmark']" />
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -64,6 +70,14 @@ defineProps({
     &-no {
       color: white;
       background: var(--color-active-link);
+    }
+  }
+  &__close svg {
+    height: 2rem;
+    width: 2rem;
+    transition: all 0.5s;
+    &:hover {
+      color: var(--color-danger);
     }
   }
 }

@@ -54,6 +54,11 @@
     border-radius: 0.4rem;
     padding: 1.5rem;
     font-size: 3rem;
+
+    &:last-child {
+      font-size: 2rem;
+      padding: 1rem;
+    }
   }
 }
 </style>

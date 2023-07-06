@@ -106,9 +106,14 @@ function clearIntervalIncrease() {
   openRef.value = true
 }
 
-function removeAction(event) {
+function closeDialogAction(event) {
   if (event === 'closeModal') {
     openRef.value = false
+    dollarRef.value = 0
+    littersRef.value = 0
+    fuelsRef.forEach((fuel) =>
+      fuel.valueModel > 0 ? (fuel.valueModel = 0) : fuel.valueModel
+    )
   }
 }
 </script>
@@ -162,7 +167,7 @@ function removeAction(event) {
   <DialogComponent :open-dialog="openRef" where-project="body">
     <GenericDialogComponent
       title="You have to pay"
-      @generic-msg="removeAction($event)"
+      @generic-msg="closeDialogAction($event)"
       :close-button="true"
     >
       <div class="generic-invoice">
