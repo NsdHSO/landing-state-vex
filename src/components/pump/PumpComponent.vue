@@ -164,7 +164,31 @@ function removeAction(event) {
       title="You have to pay"
       @generic-msg="removeAction($event)"
       :close-button="true"
-      >TEST
+    >
+      <div class="generic-invoice">
+        <div class="generic-invoice__price">
+          <div>
+            <span> Price: </span>
+            <span class="generic-invoice__price-money">
+              {{ dollarRef }}
+            </span>
+          </div>
+          <div class="generic-invoice__price-label">
+            <span>Dollars</span>
+          </div>
+        </div>
+        <div class="generic-invoice__price">
+          <div>
+            <span> Litters: </span>
+            <span class="generic-invoice__price-money">
+              {{ littersRef }}
+            </span>
+          </div>
+          <div class="generic-invoice__price-label">
+            <span>Litter</span>
+          </div>
+        </div>
+      </div>
     </GenericDialogComponent>
   </DialogComponent>
 </template>
@@ -258,6 +282,24 @@ function removeAction(event) {
           fill: var(--color-pump-three);
         }
       }
+    }
+  }
+}
+
+.generic-invoice {
+  &__price {
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+
+    &-money {
+      font-family: digital;
+      font-size: 2rem;
+    }
+    &-label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
