@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ShowValueComponent from './ShowValueComponent.vue'
-import { reactive, ref, watch } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import SherifIcon from '@/assets/icons/SherifIcon.vue'
 import PumpIcon from '@/assets/icons/PumpIcon.vue'
 import KeyCalc from '@/components/pump/KeyCalc.vue'
@@ -29,6 +29,9 @@ const fuelsRef = reactive([
     fuel: 3
   }
 ])
+const whoIsChange = computed(() =>
+  fuelsRef ? fuelsRef.find((s) => s.valueModel > 0) : 0
+)
 const disabledPressed = ref(true)
 const pumpMetaData = [
   {
@@ -193,6 +196,17 @@ function closeDialogAction(event) {
             <span>Litter</span>
           </div>
         </div>
+        <div class="generic-invoice__price liter">
+          <div>
+            <span> Price per liter: </span>
+            <span class="generic-invoice__price-money">
+              {{ pumpMetaData[whoIsChange.fuel - 1].price }}
+            </span>
+          </div>
+          <div class="generic-invoice__price-label">
+            <span>Litter</span>
+          </div>
+        </div>
       </div>
     </GenericDialogComponent>
   </DialogComponent>
@@ -306,6 +320,16 @@ function closeDialogAction(event) {
       justify-content: center;
       align-items: center;
     }
+  }
+}
+.liter {
+  border: 4px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 0 1rem;
+  transition: all 0.5s;
+  &:hover {
+    opacity: 0.9;
+    background: var(--color-border-hover);
   }
 }
 </style>
