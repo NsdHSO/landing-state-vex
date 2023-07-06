@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps({
   label: String,
-  model: String || Number,
+  model: Number,
   disabledModel: Boolean
 })
 </script>

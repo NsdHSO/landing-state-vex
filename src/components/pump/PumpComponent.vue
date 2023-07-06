@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ShowValueComponent from './ShowValueComponent.vue'
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import SherifIcon from '@/assets/icons/SherifIcon.vue'
 import PumpIcon from '@/assets/icons/PumpIcon.vue'
 import KeyCalc from '@/components/pump/KeyCalc.vue'
@@ -8,27 +8,41 @@ import KeyCalc from '@/components/pump/KeyCalc.vue'
 const dollarRef = ref('')
 const litters = ref('')
 const preset = ref('')
-const fuel1 = ref('')
-const fuel2 = ref('')
-const fuel3 = ref('')
+const fuels = reactive([
+  {
+    valueModel: 0,
+    label: 'Fuel 1',
+    fuel: 1
+  },
+  {
+    valueModel: 0,
+    label: 'Fuel 2',
+    fuel: 2
+  },
+  {
+    valueModel: 0,
+    label: 'Fuel 3',
+    fuel: 3
+  }
+])
 const disabledPressed = ref(true)
 const pumpMetaData = [
   {
     class: 'green-one',
     name: 'Green',
-    fuel: 1,
+    fuel: 0,
     price: 3.2
   },
   {
     class: 'blue-two',
     name: 'Blue',
-    fuel: 2,
+    fuel: 1,
     price: 2.2
   },
   {
     class: 'red-three',
     name: 'Red',
-    fuel: 3,
+    fuel: 2,
     price: 1.2
   }
 ] as { class: string; name: string; fuel: number; price: number }[]
@@ -42,14 +56,18 @@ function keyPressed($event) {
 }
 
 function putInCar(fuel) {
-  if (fuel.fuel === 1) {
-    fuel1.value = fuel.price
-  }
-  if (fuel.fuel === 2) {
-    fuel2.value = fuel.price
-  }
-  if (fuel.fuel === 3) {
-    fuel3.value = fuel.price
+  const increment = fuel.price / 100
+  const duration = 300 // Duration in milliseconds
+  const steps = 100 // Number of steps for the progress bar
+  const delay = duration / steps
+
+  let currentFuel = 0
+
+  for (let i = 0; i <= steps; i++) {
+    setTimeout(() => {
+      currentFuel += increment
+      fuels[fuel.fuel].valueModel = +currentFuel.toFixed(3)
+    }, i * delay)
   }
 }
 </script>
@@ -78,9 +96,12 @@ function putInCar(fuel) {
       </div>
       <div class="pump__bottom__fuel">
         <div class="pump__bottom__fuel-price">
-          <ShowValueComponent :model="fuel1" label="Fuel 1" />
-          <ShowValueComponent :model="fuel2" label="Fuel 2" />
-          <ShowValueComponent :model="fuel3" label="Fuel 3" />
+          <ShowValueComponent
+            v-for="(item, idx) in fuels"
+            :model="item.valueModel"
+            :label="item.label"
+            :key="idx"
+          />
         </div>
         <div class="pump__bottom__fuel-pump">
           <div
