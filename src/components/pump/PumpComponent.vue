@@ -53,8 +53,8 @@ const pumpMetaData = [
 
 function keyPressed($event) {
   if ($event.item !== 'Clear') {
-    presetRef.value = presetRef.value + $event.item + 0
-    dollarRef.value = ''
+    presetRef.value = +(presetRef.value + '' + $event.item)
+    dollarRef.value = 0
     littersRef.value = 0
   } else {
     presetRef.value = 0

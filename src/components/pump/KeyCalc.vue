@@ -59,6 +59,15 @@
       font-size: 2rem;
       padding: 1rem;
     }
+
+    &:hover {
+      background: var(--color-pump-one);
+      color: var(--color-pump-three);
+    }
+
+    &:active {
+      background: var(--color-text);
+    }
   }
 }
 </style>
