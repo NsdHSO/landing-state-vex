@@ -75,10 +75,7 @@ function addContAtEveryDelayStep(
     }, i * delay)
   }
 }
-function removeAction(event) {
-  open.value = false
-  console.log(event)
-}
+
 function putInCar(fuel) {
   const increment = fuel.price / 100
   const duration = 300 // Duration in milliseconds
@@ -107,6 +104,12 @@ function increaseLitter(delay) {
 function clearIntervalIncrease() {
   clearInterval(increaseIntervalRef.value)
   openRef.value = true
+}
+
+function removeAction(event) {
+  if (event === 'closeModal') {
+    openRef.value = false
+  }
 }
 </script>
 
@@ -160,7 +163,9 @@ function clearIntervalIncrease() {
     <GenericDialogComponent
       title="You have to pay"
       @generic-msg="removeAction($event)"
-    />
+      :close-button="true"
+      >TEST
+    </GenericDialogComponent>
   </DialogComponent>
 </template>
 

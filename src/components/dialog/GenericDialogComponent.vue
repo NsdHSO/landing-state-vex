@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps({
-  title: String
+  title: String,
+  closeButton: Boolean
 })
 </script>
 
@@ -9,11 +10,23 @@ defineProps({
     <p>
       {{ title }}
     </p>
-    <div class="generic-container__action">
-      <button @click="$emit('genericMsg', true)" class="generic-container__action-yes">Yes</button>
-      <button @click="$emit('genericMsg', false)" class="generic-container__action-no">No</button>
+    <div class="generic-container__action" v-if="!closeButton">
+      <button
+        @click="$emit('genericMsg', true)"
+        class="generic-container__action-yes"
+      >
+        Yes
+      </button>
+      <button
+        @click="$emit('genericMsg', false)"
+        class="generic-container__action-no"
+      >
+        No
+      </button>
     </div>
+    <slot />
   </div>
+  <div v-if="closeButton" @click="$emit('genericMsg', 'closeModal')">X</div>
 </template>
 
 <style scoped lang="scss">
@@ -22,6 +35,7 @@ defineProps({
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  width: 100%;
 
   p {
     font-size: 1.2rem;

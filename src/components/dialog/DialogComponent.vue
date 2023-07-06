@@ -32,6 +32,8 @@ defineProps({
     padding: 1rem;
     box-shadow: var(--shadow-table);
     border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
   }
 }
 </style>
