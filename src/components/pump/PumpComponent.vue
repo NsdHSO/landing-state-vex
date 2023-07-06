@@ -327,6 +327,7 @@ function closeDialogAction(event) {
   border-radius: 1rem;
   padding: 0 1rem;
   transition: all 0.5s;
+  gap: 0.2rem;
   &:hover {
     opacity: 0.9;
     background: var(--color-border-hover);
