@@ -35,6 +35,12 @@ const whoIsChange = computed(() =>
 const disabledPressed = ref(true)
 const pumpMetaData = [
   {
+    class: 'red-three',
+    name: 'Red',
+    fuel: 2,
+    price: 1.2
+  },
+  {
     class: 'green-one',
     name: 'Green',
     fuel: 0,
@@ -45,12 +51,6 @@ const pumpMetaData = [
     name: 'Blue',
     fuel: 1,
     price: 2.2
-  },
-  {
-    class: 'red-three',
-    name: 'Red',
-    fuel: 2,
-    price: 1.2
   }
 ] as { class: string; name: string; fuel: number; price: number }[]
 
