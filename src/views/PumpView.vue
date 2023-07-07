@@ -40,7 +40,6 @@ const pumpMetaData = reactive([
     label: 'Fuel 3'
   }
 ]) as {
-  price: number
   valueModel: number
   label: string
   class: string
@@ -52,6 +51,11 @@ const whoIsChange = computed(() =>
   pumpMetaData ? pumpMetaData.find((s) => s.valueModel > 0) : 0
 )
 
+/**
+ * Handles key press event.
+ * @param {Object} $event - The event object.
+ * @param {string} $event.item - The key item pressed.
+ */
 function keyPressed($event) {
   if ($event.item !== 'Clear') {
     presetRef.value = +(presetRef.value + '' + $event.item)
@@ -62,6 +66,15 @@ function keyPressed($event) {
   }
 }
 
+/**
+ * Adds fuel continuously at every delay step.
+ * @param {number} steps - The number of steps.
+ * @param {number} currentFuel - The current fuel value.
+ * @param {number} increment - The increment value.
+ * @param {Fuel} fuel - The fuel object.
+ * @param {number} delay - The delay in milliseconds.
+ * @param {number} idx - The index of the fuel object in the pumpMetaData array.
+ */
 function addContAtEveryDelayStep(
   steps: number,
   currentFuel: number,
@@ -78,6 +91,11 @@ function addContAtEveryDelayStep(
   }
 }
 
+/**
+ * Puts fuel in the car.
+ * @param {Fuel} fuel - The fuel object.
+ * @param {number} idx - The index of the fuel object in the pumpMetaData array.
+ */
 function putInCar(fuel, idx) {
   const increment = fuel.price / 100
   const duration = 300 // Duration in milliseconds
@@ -97,17 +115,28 @@ function putInCar(fuel, idx) {
   })
 }
 
+/**
+ * Increases the value of the litter.
+ * @param {number} delay - The delay in milliseconds.
+ */
 function increaseLitter(delay) {
   increaseIntervalRef.value = setInterval(() => {
     dollarRef.value++
   }, delay)
 }
 
+/**
+ * Clears the interval for increasing the litter.
+ */
 function clearIntervalIncrease() {
   clearInterval(increaseIntervalRef.value)
   openRef.value = true
 }
 
+/**
+ * Handles the close dialog action.
+ * @param {string} event - The event string.
+ */
 function closeDialogAction(event) {
   if (event === 'closeModal') {
     openRef.value = false
