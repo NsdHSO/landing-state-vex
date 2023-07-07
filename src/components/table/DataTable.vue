@@ -19,6 +19,7 @@ defineProps<DataTable<any>>()
 </script>
 
 <template>
+  <!--  This is a generic table for vue-->
   <table>
     <tr>
       <th v-for="(header, keyHeader) of showCells" :key="keyHeader">
