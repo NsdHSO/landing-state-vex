@@ -18,7 +18,7 @@ const pumpMetaData = reactive([
   {
     class: 'red-three',
     name: 'Red',
-    fuel: 2,
+    fuel: 1,
     price: 1.2,
     valueModel: 0,
     label: 'Fuel 1'
@@ -26,7 +26,7 @@ const pumpMetaData = reactive([
   {
     class: 'blue-two',
     name: 'Blue',
-    fuel: 0,
+    fuel: 2,
     price: 3.1,
     valueModel: 0,
     label: 'Fuel 2'
@@ -34,7 +34,7 @@ const pumpMetaData = reactive([
   {
     class: 'green-one',
     name: 'Green',
-    fuel: 1,
+    fuel: 0,
     price: 2.4,
     valueModel: 0,
     label: 'Fuel 3'
