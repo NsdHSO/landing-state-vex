@@ -2,7 +2,7 @@
 import DataTable from '@/components/table/DataTable.vue'
 import { useYoungList, Young } from '@/stores/youngList'
 import { useRouter } from 'vue-router'
-import { computed, onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import DialogComponent from '@/components/dialog/DialogComponent.vue'
 import GenericDialogComponent from '@/components/dialog/GenericDialogComponent.vue'
 

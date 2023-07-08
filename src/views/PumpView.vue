@@ -6,6 +6,7 @@ import KeyCalc from '@/components/pump/KeyCalc.vue'
 import DialogComponent from '@/components/dialog/DialogComponent.vue'
 import GenericDialogComponent from '@/components/dialog/GenericDialogComponent.vue'
 import ShowValueComponent from '@/components/pump/ShowValueComponent.vue'
+import SummaryComponent from '@/components/pump/SummaryComponent.vue'
 
 const dollarRef = ref(0)
 const littersRef = ref(0)
@@ -200,41 +201,11 @@ function closeDialogAction(event) {
       @generic-msg="closeDialogAction($event)"
       :close-button="true"
     >
-      <div class="generic-invoice">
-        <div class="generic-invoice__price">
-          <div>
-            <span> Price: </span>
-            <span class="generic-invoice__price-money">
-              {{ dollarRef }}
-            </span>
-          </div>
-          <div class="generic-invoice__price-label">
-            <span>Dollars</span>
-          </div>
-        </div>
-        <div class="generic-invoice__price">
-          <div>
-            <span> Litters: </span>
-            <span class="generic-invoice__price-money">
-              {{ littersRef }}
-            </span>
-          </div>
-          <div class="generic-invoice__price-label">
-            <span>Litter</span>
-          </div>
-        </div>
-        <div class="generic-invoice__price liter">
-          <div>
-            <span> Price per liter: </span>
-            <span class="generic-invoice__price-money">
-              {{ whoIsChange.price }}
-            </span>
-          </div>
-          <div class="generic-invoice__price-label">
-            <span>Litter</span>
-          </div>
-        </div>
-      </div>
+      <SummaryComponent
+        :dollar-ref="dollarRef"
+        :litters-ref="littersRef"
+        :price-ref="whoIsChange.price"
+      />
     </GenericDialogComponent>
   </DialogComponent>
 </template>
@@ -329,38 +300,6 @@ function closeDialogAction(event) {
         }
       }
     }
-  }
-}
-
-.generic-invoice {
-  &__price {
-    display: flex;
-    gap: 1rem;
-    font-size: 1rem;
-
-    &-money {
-      font-family: digital;
-      font-size: 2rem;
-    }
-
-    &-label {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-}
-
-.liter {
-  border: 4px solid var(--color-border);
-  border-radius: 1rem;
-  padding: 0 1rem;
-  transition: all 0.5s;
-  gap: 0.2rem;
-
-  &:hover {
-    opacity: 0.9;
-    background: var(--color-border-hover);
   }
 }
 
