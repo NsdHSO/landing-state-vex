@@ -144,5 +144,5 @@ body {
 
 @font-face {
   font-family: 'digital';
-  src: url('digital-7.ttf') format('truetype');
+  src: url('./fonts/digital-7.ttf') format('truetype');
 }
