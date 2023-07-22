@@ -1,7 +1,5 @@
 # landing-state-vex
 
-
-
 ## Motivation
 
 ```markdown
